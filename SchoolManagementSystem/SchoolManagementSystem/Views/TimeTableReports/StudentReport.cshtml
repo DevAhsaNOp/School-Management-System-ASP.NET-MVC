@@ -1,0 +1,78 @@
+﻿@model IEnumerable<DatabaseAccess.TimeTblTable>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<style>
+    h3 {
+        text-align: center
+    }
+</style>
+<body>
+
+    <div class="container body-content">
+        <h3> Student Report </h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Subject
+                </th>
+                <th>
+                    Day
+                </th>
+                <th>
+                    Start Time
+                </th>
+                <th>
+                    End Time
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    User
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClassSubjectTable.Title)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Day)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserTable.FullName)
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { id=item.TimeTableID }) |
+                            @Html.ActionLink("Details", "Details", new { id=item.TimeTableID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id=item.TimeTableID })
+                        </td>*@
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

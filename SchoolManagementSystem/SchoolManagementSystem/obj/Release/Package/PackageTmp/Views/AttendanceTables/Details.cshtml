@@ -1,0 +1,58 @@
+﻿@model DatabaseAccess.AttendanceTable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AttendanceTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AttendDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AttendDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AttendTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AttendTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassTable.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SessionTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SessionTable.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentTable.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AttendanceID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

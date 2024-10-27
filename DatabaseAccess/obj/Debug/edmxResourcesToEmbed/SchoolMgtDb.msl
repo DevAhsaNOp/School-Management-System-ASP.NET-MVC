@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SchoolMgtDbModelStoreContainer" CdmEntityContainer="SchoolMgtDbEntities">
+    <EntitySetMapping Name="AnnualTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.AnnualTable">
+        <MappingFragment StoreEntitySet="AnnualTable">
+          <ScalarProperty Name="AnnualID" ColumnName="AnnualID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Programe_ID" ColumnName="Programe_ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Fees" ColumnName="Fees" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AttendanceTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.AttendanceTable">
+        <MappingFragment StoreEntitySet="AttendanceTable">
+          <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
+          <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+          <ScalarProperty Name="AttendDate" ColumnName="AttendDate" />
+          <ScalarProperty Name="AttendTime" ColumnName="AttendTime" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassSubjectTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.ClassSubjectTable">
+        <MappingFragment StoreEntitySet="ClassSubjectTable">
+          <ScalarProperty Name="ClassSubjectID" ColumnName="ClassSubjectID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.ClassTable">
+        <MappingFragment StoreEntitySet="ClassTable">
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DesignationTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.DesignationTable">
+        <MappingFragment StoreEntitySet="DesignationTable">
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeCertificationTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.EmployeeCertificationTable">
+        <MappingFragment StoreEntitySet="EmployeeCertificationTable">
+          <ScalarProperty Name="EmployeeCertificationID" ColumnName="EmployeeCertificationID" />
+          <ScalarProperty Name="CertificationName" ColumnName="CertificationName" />
+          <ScalarProperty Name="CertificationAuthority" ColumnName="CertificationAuthority" />
+          <ScalarProperty Name="LevelCertification" ColumnName="LevelCertification" />
+          <ScalarProperty Name="FromYear" ColumnName="FromYear" />
+          <ScalarProperty Name="EmployeeResumeID" ColumnName="EmployeeResumeID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeEducationTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.EmployeeEducationTable">
+        <MappingFragment StoreEntitySet="EmployeeEducationTable">
+          <ScalarProperty Name="EmployeeEducationID" ColumnName="EmployeeEducationID" />
+          <ScalarProperty Name="InstituteUniversity" ColumnName="InstituteUniversity" />
+          <ScalarProperty Name="TitleOfDiploma" ColumnName="TitleOfDiploma" />
+          <ScalarProperty Name="Degree" ColumnName="Degree" />
+          <ScalarProperty Name="FromYear" ColumnName="FromYear" />
+          <ScalarProperty Name="ToYear" ColumnName="ToYear" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="EmployeeResumeID" ColumnName="EmployeeResumeID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeLanguageTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.EmployeeLanguageTable">
+        <MappingFragment StoreEntitySet="EmployeeLanguageTable">
+          <ScalarProperty Name="EmployeeLanguageID" ColumnName="EmployeeLanguageID" />
+          <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+          <ScalarProperty Name="Proficiency" ColumnName="Proficiency" />
+          <ScalarProperty Name="EmployeeResumeID" ColumnName="EmployeeResumeID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeLeavingTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.EmployeeLeavingTable">
+        <MappingFragment StoreEntitySet="EmployeeLeavingTable">
+          <ScalarProperty Name="EmployeeLeavingID" ColumnName="EmployeeLeavingID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="LeavingDate" ColumnName="LeavingDate" />
+          <ScalarProperty Name="LeavingReason" ColumnName="LeavingReason" />
+          <ScalarProperty Name="LeavingComments" ColumnName="LeavingComments" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeResumeTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.EmployeeResumeTable">
+        <MappingFragment StoreEntitySet="EmployeeResumeTable">
+          <ScalarProperty Name="EmployeeResumeID" ColumnName="EmployeeResumeID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="EducationalLevel" ColumnName="EducationalLevel" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="LinkedInProdil" ColumnName="LinkedInProdil" />
+          <ScalarProperty Name="FaceBookProfil" ColumnName="FaceBookProfil" />
+          <ScalarProperty Name="C_CornerProfil" ColumnName="C_CornerProfil" />
+          <ScalarProperty Name="TwitterProfil" ColumnName="TwitterProfil" />
+          <ScalarProperty Name="Profil" ColumnName="Profil" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeSalaryTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.EmployeeSalaryTable">
+        <MappingFragment StoreEntitySet="EmployeeSalaryTable">
+          <ScalarProperty Name="EmployeeSalaryID" ColumnName="EmployeeSalaryID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="SalaryMonth" ColumnName="SalaryMonth" />
+          <ScalarProperty Name="SalaryYear" ColumnName="SalaryYear" />
+          <ScalarProperty Name="SalaryDate" ColumnName="SalaryDate" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeSkillTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.EmployeeSkillTable">
+        <MappingFragment StoreEntitySet="EmployeeSkillTable">
+          <ScalarProperty Name="EmployeeSkillID" ColumnName="EmployeeSkillID" />
+          <ScalarProperty Name="SkillName" ColumnName="SkillName" />
+          <ScalarProperty Name="EmployeeResumeID" ColumnName="EmployeeResumeID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeWorkExperienceTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.EmployeeWorkExperienceTable">
+        <MappingFragment StoreEntitySet="EmployeeWorkExperienceTable">
+          <ScalarProperty Name="EmployeeWorkExperienceID" ColumnName="EmployeeWorkExperienceID" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="FromYear" ColumnName="FromYear" />
+          <ScalarProperty Name="ToYear" ColumnName="ToYear" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="EmployeeResumeID" ColumnName="EmployeeResumeID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.EventTable">
+        <MappingFragment StoreEntitySet="EventTable">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+          <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamMarkTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.ExamMarkTable">
+        <MappingFragment StoreEntitySet="ExamMarkTable">
+          <ScalarProperty Name="MarkID" ColumnName="MarkID" />
+          <ScalarProperty Name="ExamID" ColumnName="ExamID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TotalMarks" ColumnName="TotalMarks" />
+          <ScalarProperty Name="ObtainMarks" ColumnName="ObtainMarks" />
+          <ScalarProperty Name="ClassSubjectID" ColumnName="ClassSubjectID" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamSettingTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.ExamSettingTable">
+        <MappingFragment StoreEntitySet="ExamSettingTable">
+          <ScalarProperty Name="ExamSettingID" ColumnName="ExamSettingID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Session_ID" ColumnName="Session_ID" />
+          <ScalarProperty Name="Exam_ID" ColumnName="Exam_ID" />
+          <ScalarProperty Name="ProgrameSession_ID" ColumnName="ProgrameSession_ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.ExamTable">
+        <MappingFragment StoreEntitySet="ExamTable">
+          <ScalarProperty Name="ExamID" ColumnName="ExamID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Descrption" ColumnName="Descrption" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpensesTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.ExpensesTable">
+        <MappingFragment StoreEntitySet="ExpensesTable">
+          <ScalarProperty Name="ExpensesID" ColumnName="ExpensesID" />
+          <ScalarProperty Name="ExpenseType_ID" ColumnName="ExpenseType_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+          <ScalarProperty Name="Descrption" ColumnName="Descrption" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpensesTypeTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.ExpensesTypeTable">
+        <MappingFragment StoreEntitySet="ExpensesTypeTable">
+          <ScalarProperty Name="ExpenseTypeID" ColumnName="ExpenseTypeID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProgrameSessionTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.ProgrameSessionTable">
+        <MappingFragment StoreEntitySet="ProgrameSessionTable">
+          <ScalarProperty Name="ProgrameSessionID" ColumnName="ProgrameSessionID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Session_ID" ColumnName="Session_ID" />
+          <ScalarProperty Name="Programe_ID" ColumnName="Programe_ID" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProgrameTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.ProgrameTable">
+        <MappingFragment StoreEntitySet="ProgrameTable">
+          <ScalarProperty Name="ProgrameID" ColumnName="ProgrameID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.RoomTable">
+        <MappingFragment StoreEntitySet="RoomTable">
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchoolLeavingTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.SchoolLeavingTable">
+        <MappingFragment StoreEntitySet="SchoolLeavingTable">
+          <ScalarProperty Name="SchoolLeavingID" ColumnName="SchoolLeavingID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="LeavingDate" ColumnName="LeavingDate" />
+          <ScalarProperty Name="LeavingReason" ColumnName="LeavingReason" />
+          <ScalarProperty Name="LeavingComments" ColumnName="LeavingComments" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SectionTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.SectionTable">
+        <MappingFragment StoreEntitySet="SectionTable">
+          <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SessionProgrameSubjectSettingTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.SessionProgrameSubjectSettingTable">
+        <MappingFragment StoreEntitySet="SessionProgrameSubjectSettingTable">
+          <ScalarProperty Name="SessionProgrameSubjectSettingID" ColumnName="SessionProgrameSubjectSettingID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Session_ID" ColumnName="Session_ID" />
+          <ScalarProperty Name="Programe_ID" ColumnName="Programe_ID" />
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+          <ScalarProperty Name="Subject_ID" ColumnName="Subject_ID" />
+          <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SessionTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.SessionTable">
+        <MappingFragment StoreEntitySet="SessionTable">
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StaffAttendanceTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.StaffAttendanceTable">
+        <MappingFragment StoreEntitySet="StaffAttendanceTable">
+          <ScalarProperty Name="StaffAttendanceID" ColumnName="StaffAttendanceID" />
+          <ScalarProperty Name="Staff_ID" ColumnName="Staff_ID" />
+          <ScalarProperty Name="AttendDate" ColumnName="AttendDate" />
+          <ScalarProperty Name="ComingTime" ColumnName="ComingTime" />
+          <ScalarProperty Name="ClosingTime" ColumnName="ClosingTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StaffTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.StaffTable">
+        <MappingFragment StoreEntitySet="StaffTable">
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Designation_ID" ColumnName="Designation_ID" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentPromoteTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.StudentPromoteTable">
+        <MappingFragment StoreEntitySet="StudentPromoteTable">
+          <ScalarProperty Name="StudentPromoteID" ColumnName="StudentPromoteID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="ProgrameSessionID" ColumnName="ProgrameSessionID" />
+          <ScalarProperty Name="PromoteDate" ColumnName="PromoteDate" />
+          <ScalarProperty Name="AnnualFee" ColumnName="AnnualFee" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsSubmit" ColumnName="IsSubmit" />
+          <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.StudentTable">
+        <MappingFragment StoreEntitySet="StudentTable">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="Session_ID" ColumnName="Session_ID" />
+          <ScalarProperty Name="Programe_ID" ColumnName="Programe_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="AddmissionDate" ColumnName="AddmissionDate" />
+          <ScalarProperty Name="PreviousSchool" ColumnName="PreviousSchool" />
+          <ScalarProperty Name="PreviousPercentage" ColumnName="PreviousPercentage" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.SubjectTable">
+        <MappingFragment StoreEntitySet="SubjectTable">
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TotalMarks" ColumnName="TotalMarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionFeeTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.SubmissionFeeTable">
+        <MappingFragment StoreEntitySet="SubmissionFeeTable">
+          <ScalarProperty Name="SubmissionFeeID" ColumnName="SubmissionFeeID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Programe_ID" ColumnName="Programe_ID" />
+          <ScalarProperty Name="SubmissionDate" ColumnName="SubmissionDate" />
+          <ScalarProperty Name="FeesMonth" ColumnName="FeesMonth" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TimeTblTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.TimeTblTable">
+        <MappingFragment StoreEntitySet="TimeTblTable">
+          <ScalarProperty Name="TimeTableID" ColumnName="TimeTableID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Subject_ID" ColumnName="Subject_ID" />
+          <ScalarProperty Name="ClassSubjectID" ColumnName="ClassSubjectID" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="Room_ID" ColumnName="Room_ID" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserType_ID" ColumnName="UserType_ID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypeTables">
+      <EntityTypeMapping TypeName="SchoolMgtDbModel.UserTypeTable">
+        <MappingFragment StoreEntitySet="UserTypeTable">
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

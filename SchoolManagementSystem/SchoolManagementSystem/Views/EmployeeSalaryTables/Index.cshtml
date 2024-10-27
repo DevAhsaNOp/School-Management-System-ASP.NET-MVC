@@ -1,0 +1,71 @@
+﻿@model IEnumerable<DatabaseAccess.EmployeeSalaryTable>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<p>
+    @Html.ActionLink("Submit Salary", "Create", null, new { @class = "btn btn-success" })
+</p>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All Staff</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StaffTable.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SalaryMonth)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SalaryYear)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SalaryDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Salary)
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                    </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffTable.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SalaryMonth)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SalaryYear)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SalaryDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Salary)
+                        </td>
+
+                        <td class="btn-group">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeSalaryID }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Details", "Details", new { id = item.EmployeeSalaryID }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeSalaryID }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+</div>
+</div>

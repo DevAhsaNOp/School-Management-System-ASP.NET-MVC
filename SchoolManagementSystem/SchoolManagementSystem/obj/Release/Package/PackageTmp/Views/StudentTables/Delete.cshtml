@@ -1,0 +1,152 @@
+﻿@model DatabaseAccess.StudentTable
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>StudentTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FatherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FatherName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateofBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateofBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddmissionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddmissionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreviousSchool)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreviousSchool)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreviousPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreviousPercentage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nationality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nationality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassTable.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgrameTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProgrameTable.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SessionTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SessionTable.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserTable.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserTable.FullName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

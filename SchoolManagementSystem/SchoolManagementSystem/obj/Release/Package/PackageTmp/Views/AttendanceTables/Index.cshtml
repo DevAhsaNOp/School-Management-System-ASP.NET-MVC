@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DatabaseAccess.AttendanceTable>
+
+@{
+    ViewBag.Title = "Index";
+}
+<p>
+    @Html.ActionLink("Submit Attendance", "Create", null, new { @class = "btn btn-success" })
+</p>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All Annual Fee</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AttendDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AttendTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ClassTable.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SessionTable.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StudentTable.Name)
+                        </th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AttendDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AttendTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ClassTable.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SessionTable.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StudentTable.Name)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Details", "Details", new { id = item.AttendanceID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.AttendanceID }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+</div>
+</div>

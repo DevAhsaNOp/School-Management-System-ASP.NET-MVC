@@ -1,0 +1,34 @@
+﻿@model DatabaseAccess.UserTypeTable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User Type</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            User Type
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeName)
+        </dd>
+
+        <dt>
+            Description
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserTypeID }, new { @class = "btn btn-primary" }) 
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-defaut" })
+</p>

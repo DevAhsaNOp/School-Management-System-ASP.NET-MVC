@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\SchoolManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\SchoolManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D4E17A3F-5DD1-4942-8C53-76BB2FF2624F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DatabaseAccess</RootNamespace>
+    <AssemblyName>DatabaseAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\SchoolManagementSystem\packages\AutoMapper.8.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\SchoolManagementSystem\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\SchoolManagementSystem\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\SchoolManagementSystem\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\SchoolManagementSystem\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\SchoolManagementSystem\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\SchoolManagementSystem\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\SchoolManagementSystem\packages\Microsoft.AspNet.Mvc.5.3.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\SchoolManagementSystem\packages\Microsoft.AspNet.Razor.3.3.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\SchoolManagementSystem\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\SchoolManagementSystem\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\SchoolManagementSystem\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnnualTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClassSubjectTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClassTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DesignationTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeCertificationTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeEducationTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeLanguageTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeLeavingTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeResumeTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeSalaryTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeSkillTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeWorkExperienceTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExamMarkTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExamSettingTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExamTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExpensesTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExpensesTypeTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProgrameSessionTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProgrameTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolLeavingTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolMgtDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolMgtDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolMgtDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolMgtDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolMgtDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SectionTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SessionProgrameSubjectSettingTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SessionTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StaffAttendanceTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StaffTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentPromoteTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubjectTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionFeeTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TimeTblTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserTypeTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="SchoolMgtDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SchoolMgtDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="SchoolMgtDb.edmx.diagram">
+      <DependentUpon>SchoolMgtDb.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SchoolMgtDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SchoolMgtDb.edmx</DependentUpon>
+      <LastGenOutput>SchoolMgtDb.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SchoolMgtDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SchoolMgtDb.edmx</DependentUpon>
+      <LastGenOutput>SchoolMgtDb.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\SchoolManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\SchoolManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\SchoolManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\SchoolManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\SchoolManagementSystem\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\SchoolManagementSystem\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+  </Target>
+  <Import Project="..\SchoolManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\SchoolManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <Import Project="..\SchoolManagementSystem\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\SchoolManagementSystem\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+</Project>

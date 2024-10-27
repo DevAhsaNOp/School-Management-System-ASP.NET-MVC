@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DatabaseAccess.StaffAttendanceTable>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<style>
+    h3 {
+        text-align: center
+    }
+</style>
+<body>
+
+    <div class="container body-content">
+        <h3> Staff Attendance Report </h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Staff Name
+                </th>
+                <th>
+                    Designation 
+                </th>
+                <th>
+                    Attened Date
+                </th>
+                <th>
+                    Coming Time
+                </th>
+                <th>
+                    Closing Time
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffTable.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffTable.DesignationTable.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComingTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClosingTime)
+            </td>
+
+            @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StaffAttendanceID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StaffAttendanceID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StaffAttendanceID })
+        </td>*@
+        </tr>
+            }
+
+        </table>
+        </div>
+</body>
+</html>

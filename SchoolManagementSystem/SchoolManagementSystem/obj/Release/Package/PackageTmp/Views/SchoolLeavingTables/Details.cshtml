@@ -1,0 +1,74 @@
+﻿@model DatabaseAccess.SchoolLeavingTable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SchoolLeavingTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LeavingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeavingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeavingReason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeavingReason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeavingComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeavingComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassTable.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentTable.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserTable.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserTable.FullName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SchoolLeavingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

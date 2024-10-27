@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DatabaseAccess.AttendanceTable>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<style>
+    h3 {
+        text-align: center
+    }
+</style>
+<body>
+
+    <div class="container body-content">
+        <h3> Student Attendance Report </h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Student
+                </th>
+                <th>
+                    Class
+                </th>
+                <th>
+                    Attend Date
+                </th>
+                <th>
+                    Attend Time
+                </th>
+                
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentTable.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClassTable.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AttendDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AttendTime)
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { id=item.AttendanceID }) |
+                            @Html.ActionLink("Details", "Details", new { id=item.AttendanceID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id=item.AttendanceID })
+                        </td>*@
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>
