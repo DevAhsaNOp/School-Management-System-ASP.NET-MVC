@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DatabaseAccess.ClassSubjectTable>
+﻿@model IEnumerable<SchoolManagementSystem.ViewModels.ClassSubjectVM>
 
 @{
     ViewBag.Title = "Index";
@@ -17,13 +17,13 @@
                 <thead>
                     <tr>
                         <th>
-                            Class Subject Title
+                            ID
                         </th>
                         <th>
                             Class Title
                         </th>
                         <th>
-                            Subject
+                            Subjects
                         </th>
                         <th>
                             Status
@@ -36,29 +36,33 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ClassTable.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SubjectTable.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.IsActive)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ClassSubjectID }, new { @class = "btn btn-primary" })
-                            @Html.ActionLink("Details", "Details", new { id = item.ClassSubjectID }, new { @class = "btn btn-info" })
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ClassSubjectID }, new { @class = "btn btn-danger" })
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                @string.Concat("CS#", Html.DisplayFor(modelItem => item.ClassSectionID))
+                            </td>
+                            <td>
+                               Class @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                <ul style="list-style: none!important; padding: 0 !important;">
+                                    @foreach (var subject in item.Subjects)
+                                    {
+                                        <li style="color: #4e73df !important;">@subject</li>
+                                    }
+                                </ul>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IsActive)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ClassSectionID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Details", "Details", new { id = item.ClassSectionID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ClassSectionID }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
         </div>
-</div>
+    </div>
 </div>

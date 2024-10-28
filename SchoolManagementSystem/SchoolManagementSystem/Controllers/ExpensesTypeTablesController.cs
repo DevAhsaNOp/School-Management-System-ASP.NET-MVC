@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using DatabaseAccess;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DatabaseAccess;
 
 namespace SchoolManagementSystem.Controllers
 {
@@ -119,7 +116,7 @@ namespace SchoolManagementSystem.Controllers
             }
 
             int userId = Convert.ToInt32(Convert.ToString(Session["UserID"]));
-            expensesTypeTable.User_ID = userId; 
+            expensesTypeTable.User_ID = userId;
 
             if (ModelState.IsValid)
             {

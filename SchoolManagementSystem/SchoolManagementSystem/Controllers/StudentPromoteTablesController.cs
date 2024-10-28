@@ -1,12 +1,11 @@
-﻿using System;
+﻿using DatabaseAccess;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DatabaseAccess;
 
 namespace SchoolManagementSystem.Controllers
 {
@@ -187,7 +186,7 @@ namespace SchoolManagementSystem.Controllers
                 promoteid = 0;
             }
 
-            
+
             List<ClassTable> classTables = new List<ClassTable>();
             if (promoteid > 0)
             {
@@ -203,8 +202,8 @@ namespace SchoolManagementSystem.Controllers
                 {
                     classTables.Add(new ClassTable { ClassID = cls.ClassID, Name = cls.Name });
                 }
-            }    
-            
+            }
+
             return Json(new { data = classTables }, JsonRequestBehavior.AllowGet);
         }
 

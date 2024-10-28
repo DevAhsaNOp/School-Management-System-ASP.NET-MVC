@@ -1,8 +1,6 @@
 ﻿using DatabaseAccess;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SchoolManagementSystem.Controllers
@@ -41,15 +39,15 @@ namespace SchoolManagementSystem.Controllers
                         if (finduser[0].UserType_ID == 2)
                         {
                             return RedirectToAction("About");
-                        }    
+                        }
                         else if (finduser[0].UserType_ID == 3)
                         {
                             return RedirectToAction("About");
-                        }    
+                        }
                         else if (finduser[0].UserType_ID == 4)
                         {
                             return RedirectToAction("About");
-                        }    
+                        }
                         else if (finduser[0].UserType_ID == 1)
                         {
                             url = "About";

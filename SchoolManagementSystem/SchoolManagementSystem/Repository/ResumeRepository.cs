@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DatabaseAccess;
+using System;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.IO;
 using System.Linq;
 using System.Web;
-using SchoolManagementSystem.Models;
-using System.IO;
-using System.Data.Entity.Validation;
-using System.Data.Entity;
-using SchoolManagementSystem.ViewModels;
-using SchoolManagementSystem.Repository;
-using DatabaseAccess;
 
 namespace SchoolManagementSystem.Repository
 {

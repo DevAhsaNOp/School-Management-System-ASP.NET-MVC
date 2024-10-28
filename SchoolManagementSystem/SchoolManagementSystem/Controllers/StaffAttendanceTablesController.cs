@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DatabaseAccess;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DatabaseAccess;
 
 namespace SchoolManagementSystem.Controllers
 {
@@ -54,7 +52,7 @@ namespace SchoolManagementSystem.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            ViewBag.Staff_ID = new SelectList(db.StaffTables.Where(s=>s.IsActive == true), "StaffID", "Name");
+            ViewBag.Staff_ID = new SelectList(db.StaffTables.Where(s => s.IsActive == true), "StaffID", "Name");
             return View();
         }
 

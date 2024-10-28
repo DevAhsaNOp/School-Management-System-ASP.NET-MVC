@@ -1,13 +1,11 @@
-﻿using System;
+﻿using DatabaseAccess;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using System.Windows.Forms;
-using DatabaseAccess;
 
 namespace SchoolManagementSystem.Controllers
 {
@@ -34,7 +32,8 @@ namespace SchoolManagementSystem.Controllers
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
                 return RedirectToAction("Login", "Home");
-            } if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+            }
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
                 return RedirectToAction("Login", "Home");
             }
@@ -72,7 +71,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( ExamMarkTable examMarkTable)
+        public ActionResult Create(ExamMarkTable examMarkTable)
         {
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
@@ -103,7 +102,7 @@ namespace SchoolManagementSystem.Controllers
                 return RedirectToAction("Login", "Home");
             }
             int userId = Convert.ToInt32(Convert.ToString(Session["UserID"]));
-            
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -191,13 +190,13 @@ namespace SchoolManagementSystem.Controllers
             int promoteid = Convert.ToInt32(sid);
             var promoterecord = db.StudentPromoteTables.Find(promoteid);
             List<StudentTable> stdlist = new List<StudentTable>();
-       
-                stdlist.Add(new StudentTable { StudentID = (int)promoterecord.StudentID, Name = promoterecord.StudentTable.Name });
-            
-         
+
+            stdlist.Add(new StudentTable { StudentID = (int)promoterecord.StudentID, Name = promoterecord.StudentTable.Name });
+
+
             List<ClassSubjectTable> listsubjects = new List<ClassSubjectTable>();
-            var classsubject = db.ClassSubjectTables.Where(cls => cls.ClassID == promoterecord.ClassID && cls.IsActive == true);
-            foreach( var subj in classsubject)
+            var classsubject = db.ClassSubjectTables.Where(cls => cls.ClassSectionID == promoterecord.ClassID && cls.IsActive == true);
+            foreach (var subj in classsubject)
             {
                 listsubjects.Add(new ClassSubjectTable { ClassSubjectID = subj.ClassSubjectID });
             }
@@ -209,7 +208,7 @@ namespace SchoolManagementSystem.Controllers
         {
             int classsubjectid = Convert.ToInt32(sid);
             var totalmark = db.ClassSubjectTables.Find(classsubjectid).SubjectTable.TotalMarks;
-            return Json(new { data = totalmark}, JsonRequestBehavior.AllowGet);
+            return Json(new { data = totalmark }, JsonRequestBehavior.AllowGet);
         }
     }
 }

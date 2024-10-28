@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using DatabaseAccess;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DatabaseAccess;
 
 namespace SchoolManagementSystem.Controllers
 {
@@ -110,7 +107,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( ExamTable examTable)
+        public ActionResult Edit(ExamTable examTable)
         {
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {

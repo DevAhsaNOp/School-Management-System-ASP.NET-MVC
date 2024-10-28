@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using DatabaseAccess;
-using Magnum;
 using SchoolManagementSystem.Models;
 using SchoolManagementSystem.Repository;
 using SchoolManagementSystem.ViewModels;
@@ -33,10 +32,11 @@ namespace SchoolManagementSystem.Controllers
             if (id == null || id == 0)
             {
                 int.TryParse(Convert.ToString(Session["EmployeeResumeID"]), out employeeid);
-            }else
+            }
+            else
             {
                 employeeid = Convert.ToInt32(id);
-            }    
+            }
             using (SchoolMgtDbEntities db = new SchoolMgtDbEntities())
             {
                 var people = db.EmployeeResumeTables.Where(p => p.EmployeeID == employeeid);

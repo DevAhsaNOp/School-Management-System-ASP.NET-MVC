@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DatabaseAccess;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DatabaseAccess;
 
 namespace SchoolManagementSystem.Controllers
 {
@@ -59,7 +57,7 @@ namespace SchoolManagementSystem.Controllers
             employeeSalaryTable.SalaryMonth = DateTime.Now.AddMonths(-1).ToString("MMMM");
             employeeSalaryTable.SalaryYear = DateTime.Now.ToString("yyyy");
 
-            ViewBag.StaffID = new SelectList(db.StaffTables.Where(s=>s.IsActive == true), "StaffID", "Name");
+            ViewBag.StaffID = new SelectList(db.StaffTables.Where(s => s.IsActive == true), "StaffID", "Name");
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName");
             return View();
         }

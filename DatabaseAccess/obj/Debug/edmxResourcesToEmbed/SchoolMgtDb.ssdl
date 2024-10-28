@@ -23,12 +23,22 @@
     <Property Name="SessionID" Type="int" Nullable="false" />
     <Property Name="ClassID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="ClassSectionTable">
+    <Key>
+      <PropertyRef Name="ClassSectionID" />
+    </Key>
+    <Property Name="ClassSectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassID" Type="int" Nullable="false" />
+    <Property Name="SectionID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="ClassSubjectTable">
     <Key>
       <PropertyRef Name="ClassSubjectID" />
     </Key>
     <Property Name="ClassSubjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ClassID" Type="int" Nullable="false" />
+    <Property Name="ClassSectionID" Type="int" Nullable="false" />
     <Property Name="SubjectID" Type="int" Nullable="false" />
     <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
@@ -94,10 +104,10 @@
     <Property Name="EmployeeLeavingID" Type="int" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="StaffID" Type="int" Nullable="false" />
-    <Property Name="LeavingDate" Type="date" Nullable="false" />
+    <Property Name="LeavingDate" Type="datetime" Nullable="false" />
     <Property Name="LeavingReason" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="LeavingComments" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="EmployeeResumeTable">
     <Key>
@@ -129,7 +139,7 @@
     <Property Name="StaffID" Type="int" Nullable="false" />
     <Property Name="SalaryMonth" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="SalaryYear" Type="nchar" MaxLength="50" Nullable="false" />
-    <Property Name="SalaryDate" Type="date" Nullable="false" />
+    <Property Name="SalaryDate" Type="datetime" Nullable="false" />
     <Property Name="Comments" Type="nvarchar" MaxLength="500" Nullable="false" />
     <Property Name="Salary" Type="float" Nullable="false" />
   </EntityType>
@@ -198,8 +208,8 @@
     <Property Name="ExamID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="User_ID" Type="int" Nullable="false" />
     <Property Name="Title" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="StartDate" Type="date" Nullable="false" />
-    <Property Name="EndDate" Type="date" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
     <Property Name="Descrption" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="ExpensesTable">
@@ -233,7 +243,7 @@
     <Property Name="Session_ID" Type="int" Nullable="false" />
     <Property Name="Programe_ID" Type="int" Nullable="false" />
     <Property Name="Details" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="RegDate" Type="date" Nullable="false" />
+    <Property Name="RegDate" Type="datetime" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="ProgrameTable">
@@ -243,7 +253,7 @@
     <Property Name="ProgrameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="User_ID" Type="int" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="RoomTable">
@@ -264,10 +274,10 @@
     <Property Name="UserID" Type="int" />
     <Property Name="StudentID" Type="int" />
     <Property Name="ClassID" Type="int" />
-    <Property Name="LeavingDate" Type="date" />
+    <Property Name="LeavingDate" Type="datetime" />
     <Property Name="LeavingReason" Type="nchar" MaxLength="150" />
     <Property Name="LeavingComments" Type="nvarchar(max)" />
-    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedDate" Type="datetime" />
   </EntityType>
   <EntityType Name="SectionTable">
     <Key>
@@ -287,7 +297,7 @@
     <Property Name="Programe_ID" Type="int" Nullable="false" />
     <Property Name="Class_ID" Type="int" Nullable="false" />
     <Property Name="Subject_ID" Type="int" Nullable="false" />
-    <Property Name="RegDate" Type="date" Nullable="false" />
+    <Property Name="RegDate" Type="datetime" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="SessionTable">
@@ -297,8 +307,8 @@
     <Property Name="SessionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="User_ID" Type="int" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="StartDate" Type="date" Nullable="false" />
-    <Property Name="EndDate" Type="date" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="StaffAttendanceTable">
     <Key>
@@ -306,7 +316,7 @@
     </Key>
     <Property Name="StaffAttendanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Staff_ID" Type="int" Nullable="false" />
-    <Property Name="AttendDate" Type="date" Nullable="false" />
+    <Property Name="AttendDate" Type="datetime" Nullable="false" />
     <Property Name="ComingTime" Type="time" Precision="7" />
     <Property Name="ClosingTime" Type="time" Precision="7" />
   </EntityType>
@@ -327,7 +337,7 @@
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="Gender" Type="nchar" MaxLength="50" Nullable="false" />
     <Property Name="BasicSalary" Type="float" />
-    <Property Name="RegistrationDate" Type="date" />
+    <Property Name="RegistrationDate" Type="datetime" />
   </EntityType>
   <EntityType Name="StudentPromoteTable">
     <Key>
@@ -337,7 +347,7 @@
     <Property Name="StudentID" Type="int" />
     <Property Name="ClassID" Type="int" />
     <Property Name="ProgrameSessionID" Type="int" />
-    <Property Name="PromoteDate" Type="date" />
+    <Property Name="PromoteDate" Type="datetime" />
     <Property Name="AnnualFee" Type="int" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="IsSubmit" Type="bit" Nullable="false" />
@@ -354,11 +364,11 @@
     <Property Name="ClassID" Type="int" />
     <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="FatherName" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="DateofBirth" Type="date" Nullable="false" />
+    <Property Name="DateofBirth" Type="datetime" Nullable="false" />
     <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ContactNo" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="Photo" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="AddmissionDate" Type="date" Nullable="false" />
+    <Property Name="AddmissionDate" Type="datetime" Nullable="false" />
     <Property Name="PreviousSchool" Type="varchar" MaxLength="500" />
     <Property Name="PreviousPercentage" Type="float" />
     <Property Name="EmailAddress" Type="varchar" MaxLength="100" Nullable="false" />
@@ -372,7 +382,7 @@
     <Property Name="SubjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="User_ID" Type="int" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="RegDate" Type="date" Nullable="false" />
+    <Property Name="RegDate" Type="datetime" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="400" />
     <Property Name="TotalMarks" Type="int" Nullable="false" />
   </EntityType>
@@ -385,10 +395,20 @@
     <Property Name="Student_ID" Type="int" Nullable="false" />
     <Property Name="Amount" Type="float" Nullable="false" />
     <Property Name="Programe_ID" Type="int" Nullable="false" />
-    <Property Name="SubmissionDate" Type="date" Nullable="false" />
+    <Property Name="SubmissionDate" Type="datetime" Nullable="false" />
     <Property Name="FeesMonth" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="500" />
     <Property Name="ClassID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="TimeTblTable">
     <Key>
@@ -486,15 +506,39 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ClassSubjectTable_ClassTable">
+  <Association Name="FK_ClassSectionTable_ClassTable">
     <End Role="ClassTable" Type="Self.ClassTable" Multiplicity="1" />
-    <End Role="ClassSubjectTable" Type="Self.ClassSubjectTable" Multiplicity="*" />
+    <End Role="ClassSectionTable" Type="Self.ClassSectionTable" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="ClassTable">
         <PropertyRef Name="ClassID" />
       </Principal>
+      <Dependent Role="ClassSectionTable">
+        <PropertyRef Name="ClassSectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassSectionTable_SectionTable">
+    <End Role="SectionTable" Type="Self.SectionTable" Multiplicity="1" />
+    <End Role="ClassSectionTable" Type="Self.ClassSectionTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SectionTable">
+        <PropertyRef Name="SectionID" />
+      </Principal>
+      <Dependent Role="ClassSectionTable">
+        <PropertyRef Name="SectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassSubjectTable_ClassTable">
+    <End Role="ClassSectionTable" Type="Self.ClassSectionTable" Multiplicity="1" />
+    <End Role="ClassSubjectTable" Type="Self.ClassSubjectTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassSectionTable">
+        <PropertyRef Name="ClassSectionID" />
+      </Principal>
       <Dependent Role="ClassSubjectTable">
-        <PropertyRef Name="ClassID" />
+        <PropertyRef Name="ClassSectionID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1341,6 +1385,7 @@
   <EntityContainer Name="SchoolMgtDbModelStoreContainer">
     <EntitySet Name="AnnualTable" EntityType="Self.AnnualTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AttendanceTable" EntityType="Self.AttendanceTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClassSectionTable" EntityType="Self.ClassSectionTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ClassSubjectTable" EntityType="Self.ClassSubjectTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ClassTable" EntityType="Self.ClassTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DesignationTable" EntityType="Self.DesignationTable" Schema="dbo" store:Type="Tables" />
@@ -1371,6 +1416,7 @@
     <EntitySet Name="StudentTable" EntityType="Self.StudentTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubjectTable" EntityType="Self.SubjectTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubmissionFeeTable" EntityType="Self.SubmissionFeeTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TimeTblTable" EntityType="Self.TimeTblTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserTypeTable" EntityType="Self.UserTypeTable" Schema="dbo" store:Type="Tables" />
@@ -1394,8 +1440,16 @@
       <End Role="StudentTable" EntitySet="StudentTable" />
       <End Role="AttendanceTable" EntitySet="AttendanceTable" />
     </AssociationSet>
-    <AssociationSet Name="FK_ClassSubjectTable_ClassTable" Association="Self.FK_ClassSubjectTable_ClassTable">
+    <AssociationSet Name="FK_ClassSectionTable_ClassTable" Association="Self.FK_ClassSectionTable_ClassTable">
       <End Role="ClassTable" EntitySet="ClassTable" />
+      <End Role="ClassSectionTable" EntitySet="ClassSectionTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassSectionTable_SectionTable" Association="Self.FK_ClassSectionTable_SectionTable">
+      <End Role="SectionTable" EntitySet="SectionTable" />
+      <End Role="ClassSectionTable" EntitySet="ClassSectionTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassSubjectTable_ClassTable" Association="Self.FK_ClassSubjectTable_ClassTable">
+      <End Role="ClassSectionTable" EntitySet="ClassSectionTable" />
       <End Role="ClassSubjectTable" EntitySet="ClassSubjectTable" />
     </AssociationSet>
     <AssociationSet Name="FK_ClassSubjectTable_SubjectTable" Association="Self.FK_ClassSubjectTable_SubjectTable">

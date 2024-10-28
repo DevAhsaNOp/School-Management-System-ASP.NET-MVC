@@ -90,6 +90,9 @@
     <Compile Include="AttendanceTable.cs">
       <DependentUpon>SchoolMgtDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="ClassSectionTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="ClassSubjectTable.cs">
       <DependentUpon>SchoolMgtDb.tt</DependentUpon>
     </Compile>
@@ -194,6 +197,9 @@
       <DependentUpon>SchoolMgtDb.tt</DependentUpon>
     </Compile>
     <Compile Include="SubmissionFeeTable.cs">
+      <DependentUpon>SchoolMgtDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>SchoolMgtDb.tt</DependentUpon>
     </Compile>
     <Compile Include="TimeTblTable.cs">

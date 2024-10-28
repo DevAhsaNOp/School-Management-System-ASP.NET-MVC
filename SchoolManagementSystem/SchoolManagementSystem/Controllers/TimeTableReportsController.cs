@@ -1,8 +1,5 @@
 ﻿using DatabaseAccess;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SchoolManagementSystem.Controllers
@@ -46,7 +43,7 @@ namespace SchoolManagementSystem.Controllers
             //}
 
             //var teacherclas = db.TimeTblTables.Where(t => t.IsActive == true).OrderBy(e => e.StaffID);
-            var subjectime = db.TimeTblTables.Where(t => t.ClassSubjectTable.ClassID == classid && t.IsActive == true);
+            var subjectime = db.TimeTblTables.Where(t => t.ClassSubjectTable.ClassSectionID == classid && t.IsActive == true);
             return View(subjectime);
         }
     }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using DatabaseAccess;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DatabaseAccess;
 
 namespace SchoolManagementSystem.Controllers
 {
@@ -20,7 +17,7 @@ namespace SchoolManagementSystem.Controllers
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
                 return RedirectToAction("Login", "Home");
-            }    
+            }
 
             var userTables = db.UserTables.Include(u => u.UserTypeTable);
             return View(userTables.ToList());
@@ -33,7 +30,7 @@ namespace SchoolManagementSystem.Controllers
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
                 return RedirectToAction("Login", "Home");
-            } 
+            }
 
             if (id == null)
             {
@@ -54,7 +51,7 @@ namespace SchoolManagementSystem.Controllers
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
                 return RedirectToAction("Login", "Home");
-            } 
+            }
 
             ViewBag.UserType_ID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName");
             return View();
@@ -71,7 +68,7 @@ namespace SchoolManagementSystem.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
- 
+
             if (ModelState.IsValid)
             {
                 db.UserTables.Add(userTable);

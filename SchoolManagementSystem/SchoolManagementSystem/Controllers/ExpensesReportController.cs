@@ -1,8 +1,6 @@
 ﻿using DatabaseAccess;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SchoolManagementSystem.Controllers
@@ -13,7 +11,7 @@ namespace SchoolManagementSystem.Controllers
         // GET: ExpensesReport
         public ActionResult ExpensesWise()
         {
-            var expenses = db.ExpensesTables.ToList().OrderByDescending(e=>e.ExpensesID);
+            var expenses = db.ExpensesTables.ToList().OrderByDescending(e => e.ExpensesID);
             return View(expenses);
         }
 

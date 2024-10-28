@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DatabaseAccess;
+using System;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DatabaseAccess;
 
 namespace SchoolManagementSystem.Controllers
 {
@@ -23,7 +20,7 @@ namespace SchoolManagementSystem.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            var annualTables = db.AnnualTables.Include(a => a.ProgrameTable).Include(a => a.UserTable).Where(p=>p.IsActive == true);
+            var annualTables = db.AnnualTables.Include(a => a.ProgrameTable).Include(a => a.UserTable).Where(p => p.IsActive == true);
             return View(annualTables.ToList());
         }
 
@@ -55,7 +52,7 @@ namespace SchoolManagementSystem.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            ViewBag.Programe_ID = new SelectList(db.ProgrameTables.Where(p=>p.IsActive == true), "ProgrameID", "Name");
+            ViewBag.Programe_ID = new SelectList(db.ProgrameTables.Where(p => p.IsActive == true), "ProgrameID", "Name");
             ViewBag.User_ID = new SelectList(db.UserTables, "UserID", "FullName");
             return View();
         }
@@ -65,7 +62,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( AnnualTable annualTable)
+        public ActionResult Create(AnnualTable annualTable)
         {
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
@@ -79,12 +76,12 @@ namespace SchoolManagementSystem.Controllers
             //annualTable.Programe_ID = programId;
 
             if (ModelState.IsValid)
-                {
-                    db.AnnualTables.Add(annualTable);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-           
+            {
+                db.AnnualTables.Add(annualTable);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
             ViewBag.Programe_ID = new SelectList(db.ProgrameTables.Where(p => p.IsActive == true), "ProgrameID", "Name", annualTable.Programe_ID);
             ViewBag.User_ID = new SelectList(db.UserTables, "UserID", "FullName", annualTable.User_ID);
             return View(annualTable);

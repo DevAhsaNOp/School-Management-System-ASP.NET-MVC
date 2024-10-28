@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DatabaseAccess;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DatabaseAccess;
 
 namespace SchoolManagementSystem.Controllers
 {
@@ -23,7 +21,7 @@ namespace SchoolManagementSystem.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            var eventTables = db.EventTables.Include(e => e.UserTable).OrderByDescending(e=>e.EventID);
+            var eventTables = db.EventTables.Include(e => e.UserTable).OrderByDescending(e => e.EventID);
             return View(eventTables.ToList());
         }
 

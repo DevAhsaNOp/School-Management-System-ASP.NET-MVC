@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SchoolManagementSystem.ViewModels
 {
     public class CertificationVM
     {
-        [Required(ErrorMessage ="Please enter Your Certification Name")]
+        [Required(ErrorMessage = "Please enter Your Certification Name")]
         public string CertificationName { get; set; }
 
         [Required(ErrorMessage = "Please enter Your Certification Authority")]

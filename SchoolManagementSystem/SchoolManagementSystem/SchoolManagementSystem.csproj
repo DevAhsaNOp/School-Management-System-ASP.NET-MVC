@@ -209,6 +209,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Certification.cs" />
+    <Compile Include="Models\ClassSubjectRequest.cs" />
     <Compile Include="Models\Education.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Models\Person.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Repository\IResumeRepository.cs" />
     <Compile Include="Repository\ResumeRepository.cs" />
     <Compile Include="ViewModels\CertificationVM.cs" />
+    <Compile Include="ViewModels\ClassSubjectVM.cs" />
     <Compile Include="ViewModels\EducationVM.cs" />
     <Compile Include="ViewModels\LanguageVM.cs" />
     <Compile Include="ViewModels\PersonVM.cs" />

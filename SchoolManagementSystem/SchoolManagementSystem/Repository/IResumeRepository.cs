@@ -1,12 +1,6 @@
-﻿
-using SchoolManagementSystem.Models;
-using System;
-using System.Collections.Generic;
+﻿using DatabaseAccess;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
-using DatabaseAccess;
 
 namespace SchoolManagementSystem.Repository
 {

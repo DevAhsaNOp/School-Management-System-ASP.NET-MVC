@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using DatabaseAccess;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DatabaseAccess;
 
 namespace SchoolManagementSystem.Controllers
 {
@@ -33,7 +30,7 @@ namespace SchoolManagementSystem.Controllers
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
                 return RedirectToAction("Login", "Home");
-            } 
+            }
 
             if (id == null)
             {
@@ -54,7 +51,7 @@ namespace SchoolManagementSystem.Controllers
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
                 return RedirectToAction("Login", "Home");
-            } 
+            }
 
             return View();
         }
@@ -70,7 +67,7 @@ namespace SchoolManagementSystem.Controllers
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
                 return RedirectToAction("Login", "Home");
-            } 
+            }
 
             if (ModelState.IsValid)
             {
@@ -89,7 +86,7 @@ namespace SchoolManagementSystem.Controllers
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
                 return RedirectToAction("Login", "Home");
-            } 
+            }
 
             if (id == null)
             {
@@ -114,7 +111,7 @@ namespace SchoolManagementSystem.Controllers
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
                 return RedirectToAction("Login", "Home");
-            } 
+            }
 
             if (ModelState.IsValid)
             {
@@ -132,7 +129,7 @@ namespace SchoolManagementSystem.Controllers
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
                 return RedirectToAction("Login", "Home");
-            } 
+            }
 
             if (id == null)
             {

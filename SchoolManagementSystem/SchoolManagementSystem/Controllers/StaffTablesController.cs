@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using DatabaseAccess;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.IO;
@@ -8,8 +7,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DatabaseAccess;
-using Magnum.FileSystem;
 
 namespace SchoolManagementSystem.Controllers
 {
@@ -148,7 +145,7 @@ namespace SchoolManagementSystem.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(staffTable).State = EntityState.Modified;
-               
+
 
                 try
                 {
