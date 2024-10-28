@@ -122,22 +122,29 @@ namespace SchoolManagementSystem.Controllers
         public ActionResult Edit(int? id)
         {
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
-            {
                 return RedirectToAction("Login", "Home");
-            }
 
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ClassSubjectTable classSubjectTable = db.ClassSubjectTables.Find(id);
-            if (classSubjectTable == null)
-            {
+
+            var classSubjectTable = db.ClassSubjectTables.Where(cst => cst.ClassSectionID == id).ToList();
+
+            if (classSubjectTable == null || classSubjectTable.Count == 0)
                 return HttpNotFound();
-            }
-            ViewBag.ClassSectionID = new SelectList(db.ClassTables.Where(s => s.IsActive == true), "ClassSectionID", "Title", classSubjectTable.ClassSectionID);
-            ViewBag.SubjectID = new SelectList(db.SubjectTables, "SubjectID", "Name", classSubjectTable.SubjectID);
-            return View(classSubjectTable);
+
+            var classSubjectData = new ClassSubjectUpdateRequest
+            {
+                Title = classSubjectTable.FirstOrDefault().Title,
+                SubjectID = classSubjectTable.Select(s => s.SubjectID).ToList(),
+                ClassSubjectID = classSubjectTable.FirstOrDefault().ClassSubjectID,
+                IsActive = classSubjectTable.FirstOrDefault().IsActive,
+                ClassSectionID = classSubjectTable.FirstOrDefault().ClassSectionID
+            };
+
+            var subjectIds = classSubjectTable.Select(s => s.SubjectID).ToList();
+            ViewBag.ClassSectionID = new SelectList(db.ClassTables.Where(s => s.IsActive == true), "ClassSectionID", "Title", id);
+            ViewBag.SubjectID = new MultiSelectList(db.SubjectTables, "SubjectID", "Name", subjectIds);
+            return View(classSubjectData);
         }
 
         // POST: ClassSubjectTables/Edit/5
@@ -145,7 +152,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ClassSubjectUpdateteRequest classSubjectTable)
+        public ActionResult Edit(ClassSubjectUpdateRequest classSubjectTable)
         {
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
@@ -157,13 +164,13 @@ namespace SchoolManagementSystem.Controllers
                 var classTitle = db.ClassSectionTables.Where(s => s.ClassSectionID == classSubjectTable.ClassSectionID).Select(s => s.Title).FirstOrDefault();
                 var subjectList = db.SubjectTables.Where(s => classSubjectTable.SubjectID.Contains(s.SubjectID)).Select(s => new { s.SubjectID, s.Name }).ToList();
 
-                foreach (var subjectId in classSubjectTable.SubjectID)
+                foreach (var subject in classSubjectTable.SubjectID)
                 {
                     var classSubject = new ClassSubjectTable
                     {
                         ClassSectionID = classSubjectTable.ClassSectionID,
-                        SubjectID = subjectId,
-                        Title = classTitle + " - " + subjectList.FirstOrDefault(su => su.SubjectID == subjectId).Name,
+                        SubjectID = subject,
+                        Title = classTitle + " - " + subjectList.FirstOrDefault(su => su.SubjectID == subject).Name,
                         IsActive = classSubjectTable.IsActive,
                         ClassSubjectID = classSubjectTable.ClassSubjectID
                     };
@@ -175,7 +182,7 @@ namespace SchoolManagementSystem.Controllers
             }
 
             ViewBag.ClassSectionID = new SelectList(db.ClassSectionTables.Where(s => s.IsActive == true), "ClassSectionID", "Title", classSubjectTable.ClassSectionID);
-            ViewBag.SubjectID = new SelectList(db.SubjectTables, "SubjectID", "Name", classSubjectTable.SubjectID);
+            //ViewBag.SubjectID = new SelectList(db.SubjectTables, "SubjectID", "Name", classSubjectTable.SubjectID);
 
             return View(classSubjectTable);
         }
