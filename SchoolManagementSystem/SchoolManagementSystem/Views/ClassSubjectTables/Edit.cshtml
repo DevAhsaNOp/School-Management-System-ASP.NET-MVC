@@ -30,10 +30,26 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.SubjectID, "SubjectID", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.ListBoxFor(model => model.SubjectID, (MultiSelectList)ViewBag.SubjectID, new { @class = "form-control" })
+                        @*@Html.ListBoxFor(model => model.SubjectID, (MultiSelectList)ViewBag.SubjectID, new { @class = "form-control" })*@
+                        <table>
+                            @for (int i = 0; i < Model.SubjectID.Count(); i++)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.CheckBoxFor(m => m.SubjectID[i].Selected)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(m => m.SubjectID[i].Text)
+                                        @Html.HiddenFor(m => m.SubjectID[i].Value)
+                                        @Html.HiddenFor(m => m.SubjectID[i].Text)
+                                    </td>
+                                </tr>
+                            }
+                        </table>
                         @Html.ValidationMessageFor(model => model.SubjectID, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })

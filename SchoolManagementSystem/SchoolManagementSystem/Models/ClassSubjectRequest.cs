@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace SchoolManagementSystem.Models
 {
@@ -19,7 +20,7 @@ namespace SchoolManagementSystem.Models
     {
         public int ClassSubjectID { get; set; }
         public int ClassSectionID { get; set; }
-        public List<int> SubjectID { get; set; }
+        public List<SelectListItem> SubjectID { get; set; }
         public string Title { get; set; }
         public bool IsActive { get; set; }
     }
