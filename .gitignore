@@ -1,0 +1,88 @@
+# Ignore Visual Studio temporary files, build results, and
+# user-specific files
+.vscode/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rtifacts/
+*.dll
+*.exe
+*.app
+*.apk
+*.cache
+*.msi
+*.msm
+*.msp
+*.mcp
+*.zip
+
+# Ignore the packages folder
+packages/
+**/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+
+# Ignore NuGet packages
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Ignore local test results
+TestResults/
+*.Coverage
+*.coverage
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Ignore IIS config files
+[Ii][Nn][Ee][Tt]*.[Cc][Oo][Nn][Ff][Ii][Gg]
+[Ii][Nn][Ee][Tt]*.[Ll][Oo][Gg]
+App_Data/
+
+# Resharper files
+_ReSharper*/
+*.DotSettings.user
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Ignore publish files and folders
+bin/
+obj/
+.publish/
+
+# Rider settings
+.idea/
+
+# Visual Studio Code settings
+.vs/
+.vscode/
+
+# Dotnet user-specific
+*.dotsettings

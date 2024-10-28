@@ -9,10 +9,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{11DF786D-2E94-43B4-9091-391347AE8562}|SchoolManagementSystem\\SchoolManagementSystem.csproj|C:\\Users\\Ahsan\\Documents\\.Net Projects CodeLabs\\School-Management-System-ASP.NET-MVC\\SchoolManagementSystem\\schoolmanagementsystem\\views\\classsubjecttables\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{11DF786D-2E94-43B4-9091-391347AE8562}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\views\\classsubjecttables\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11DF786D-2E94-43B4-9091-391347AE8562}|SchoolManagementSystem\\SchoolManagementSystem.csproj|C:\\Users\\Ahsan\\Documents\\.Net Projects CodeLabs\\School-Management-System-ASP.NET-MVC\\SchoolManagementSystem\\schoolmanagementsystem\\views\\classsubjecttables\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{11DF786D-2E94-43B4-9091-391347AE8562}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\views\\classsubjecttables\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,19 +54,8 @@
               "RelativeToolTip": "SchoolManagementSystem\\Views\\ClassSubjectTables\\Edit.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-28T08:12:07.734Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\Ahsan\\Documents\\.Net Projects CodeLabs\\School-Management-System-ASP.NET-MVC\\SchoolManagementSystem\\SchoolManagementSystem\\Views\\ClassSubjectTables\\Create.cshtml",
-              "RelativeDocumentMoniker": "SchoolManagementSystem\\Views\\ClassSubjectTables\\Create.cshtml",
-              "ToolTip": "C:\\Users\\Ahsan\\Documents\\.Net Projects CodeLabs\\School-Management-System-ASP.NET-MVC\\SchoolManagementSystem\\SchoolManagementSystem\\Views\\ClassSubjectTables\\Create.cshtml",
-              "RelativeToolTip": "SchoolManagementSystem\\Views\\ClassSubjectTables\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-28T07:59:51.535Z"
+              "WhenOpened": "2024-10-28T08:12:07.734Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -80,7 +65,7 @@
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Controllers\\ClassSubjectTablesController.cs",
               "ToolTip": "C:\\Users\\Ahsan\\Documents\\.Net Projects CodeLabs\\School-Management-System-ASP.NET-MVC\\SchoolManagementSystem\\SchoolManagementSystem\\Controllers\\ClassSubjectTablesController.cs",
               "RelativeToolTip": "SchoolManagementSystem\\Controllers\\ClassSubjectTablesController.cs",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAcwHsAAABMAAAAAAAAAA==",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAcwIUAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-28T06:01:07.882Z",
               "EditorCaption": ""
