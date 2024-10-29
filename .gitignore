@@ -16,6 +16,11 @@ DatabaseAccess/obj/
 SchoolManagementSystem/bin/
 SchoolManagementSystem/obj/
 
+DatabaseAccess/[Bb]in/
+DatabaseAccess/[Oo]bj/
+SchoolManagementSystem/[Bb]in/
+SchoolManagementSystem/[Oo]bj/
+
 # User-specific files
 *.suo
 *.user
