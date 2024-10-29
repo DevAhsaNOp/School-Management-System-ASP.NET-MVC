@@ -208,8 +208,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CustomAttributes.cs" />
     <Compile Include="Models\Certification.cs" />
-    <Compile Include="Models\ClassSubjectRequest.cs" />
     <Compile Include="Models\Education.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Models\Person.cs" />
@@ -218,6 +218,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IResumeRepository.cs" />
     <Compile Include="Repository\ResumeRepository.cs" />
+    <Compile Include="Request\ClassSubjectRequest.cs" />
+    <Compile Include="Response\ClassSubjectResponse.cs" />
     <Compile Include="ViewModels\CertificationVM.cs" />
     <Compile Include="ViewModels\ClassSubjectVM.cs" />
     <Compile Include="ViewModels\EducationVM.cs" />
@@ -2409,7 +2411,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="FileHelper\" />
     <Folder Include="Views\Resume\" />
   </ItemGroup>
   <ItemGroup>

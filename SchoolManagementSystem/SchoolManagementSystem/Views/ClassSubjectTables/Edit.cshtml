@@ -1,4 +1,4 @@
-﻿@model SchoolManagementSystem.Models.ClassSubjectUpdateRequest
+﻿@model SchoolManagementSystem.Request.ClassSubjectUpdateRequest
 
 @{
     ViewBag.Title = "Edit";
@@ -14,21 +14,22 @@
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                <h4>ClassSubjectTable</h4>
+                <h4>Edit Class Subject</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.ClassSubjectID)
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ClassSectionID, "Class Section", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.ClassSectionID, "Select Class Section", htmlAttributes: new { @class = "control-label col-md-2", @style = "width: fit-content;" })
+                    @Html.ValidationMessageFor(model => model.ClassSectionID, "", new { @class = "text-danger" })
                     <div class="col-md-10">
                         @Html.DropDownList("ClassSectionID", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ClassSectionID, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.SubjectID, "SubjectID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.SubjectID, "Select Subjects", htmlAttributes: new { @class = "control-label col-md-2", @style = "width: fit-content;" })
+                    @Html.ValidationMessageFor(model => model.SubjectID, "", new { @class = "text-danger" })
                     <div class="col-md-10">
                         @*@Html.ListBoxFor(model => model.SubjectID, (MultiSelectList)ViewBag.SubjectID, new { @class = "form-control" })*@
                         <table>
@@ -46,25 +47,15 @@
                                 </tr>
                             }
                         </table>
-                        @Html.ValidationMessageFor(model => model.SubjectID, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.IsActive, "Status", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.IsActive, "Status", htmlAttributes: new { @class = "control-label col-md-2", @style = "width: fit-content;" })
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
                     <div class="col-md-10">
                         <div class="checkbox">
                             @Html.EditorFor(model => model.IsActive)
-                            @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>

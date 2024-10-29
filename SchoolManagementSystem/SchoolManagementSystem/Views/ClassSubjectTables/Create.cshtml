@@ -1,4 +1,4 @@
-﻿@model SchoolManagementSystem.Models.ClassSubjectCreateRequest
+﻿@model SchoolManagementSystem.Request.ClassSubjectCreateRequest
 
 @{
     ViewBag.Title = "Create";
@@ -18,35 +18,41 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ClassSectionID, "Class Section", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.ClassSectionID, "Select Class Section", htmlAttributes: new { @class = "control-label col-md-2", @style = "width: fit-content;" })
+                    @Html.ValidationMessageFor(model => model.ClassSectionID, "", new { @class = "text-danger" })
                     <div class="col-md-5">
-                        @Html.DropDownList("ClassSectionID", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ClassSectionID, "", new { @class = "text-danger" })
+                        @Html.DropDownList("ClassSectionID", null, "---Select---", htmlAttributes: new { @class = "form-control" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.SubjectID, "Subject", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-5">
-                        @Html.ListBox("SubjectID", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.SubjectID, "", new { @class = "text-danger" })
+                    @Html.LabelFor(model => model.SubjectID, "Select Subjects", htmlAttributes: new { @class = "control-label col-md-2", @style = "width: fit-content;" })
+                    @Html.ValidationMessageFor(model => model.SubjectID, "", new { @class = "text-danger" })
+                    <div class="col-md-10">
+                        <table>
+                            @for (int i = 0; i < Model.SubjectID.Count(); i++)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.CheckBoxFor(m => m.SubjectID[i].Selected)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(m => m.SubjectID[i].Text)
+                                        @Html.HiddenFor(m => m.SubjectID[i].Value)
+                                        @Html.HiddenFor(m => m.SubjectID[i].Text)
+                                    </td>
+                                </tr>
+                            }
+                        </table>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Title, "Class Subject Title", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-5">
-                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.IsActive, "Status", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.IsActive, "Status", htmlAttributes: new { @class = "control-label col-md-2", @style = "width: fit-content;" })
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
                     <div class="col-md-10">
                         <div class="checkbox">
                             @Html.EditorFor(model => model.IsActive)
-                            @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
