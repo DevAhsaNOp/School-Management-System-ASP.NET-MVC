@@ -2296,7 +2296,6 @@
     <Content Include="Views\ProgrameSessionTables\Edit.cshtml" />
     <Content Include="Views\ProgrameSessionTables\Index.cshtml" />
     <Content Include="Views\ClassSubjectTables\Create.cshtml" />
-    <Content Include="Views\ClassSubjectTables\Delete.cshtml" />
     <Content Include="Views\ClassSubjectTables\Details.cshtml" />
     <Content Include="Views\ClassSubjectTables\Edit.cshtml" />
     <Content Include="Views\ClassSubjectTables\Index.cshtml" />

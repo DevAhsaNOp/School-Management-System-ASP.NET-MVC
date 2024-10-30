@@ -88,7 +88,12 @@ namespace SchoolManagementSystem.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            ViewBag.ClassSectionID = new SelectList(db.ClassSectionTables.Where(s => s.IsActive == true), "ClassSectionID", "Title");
+            var allClassSectionsWhomSubjectsAreNotAssigned = db.ClassSectionTables
+                .Where(s => s.IsActive == true && s
+                .ClassSubjectTables.All(cs => !cs.IsActive))
+                .ToList();
+
+            ViewBag.ClassSectionID = new SelectList(allClassSectionsWhomSubjectsAreNotAssigned, "ClassSectionID", "Title");
             var model = new ClassSubjectCreateRequest
             {
                 SubjectID = db.SubjectTables.Select(s => new SelectListItem { Text = s.Name, Value = s.SubjectID.ToString(), Selected = false }).ToList()
@@ -221,36 +226,36 @@ namespace SchoolManagementSystem.Controllers
             return View(classSubjectTable);
         }
 
-        // GET: ClassSubjectTables/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
-            {
-                return RedirectToAction("Login", "Home");
-            }
+        //// GET: ClassSubjectTables/Delete/5
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+        //    {
+        //        return RedirectToAction("Login", "Home");
+        //    }
 
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ClassSubjectTable classSubjectTable = db.ClassSubjectTables.Find(id);
-            if (classSubjectTable == null)
-            {
-                return HttpNotFound();
-            }
-            return View(classSubjectTable);
-        }
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    ClassSubjectTable classSubjectTable = db.ClassSubjectTables.Find(id);
+        //    if (classSubjectTable == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(classSubjectTable);
+        //}
 
-        // POST: ClassSubjectTables/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            ClassSubjectTable classSubjectTable = db.ClassSubjectTables.Find(id);
-            db.ClassSubjectTables.Remove(classSubjectTable);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //// POST: ClassSubjectTables/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    ClassSubjectTable classSubjectTable = db.ClassSubjectTables.Find(id);
+        //    db.ClassSubjectTables.Remove(classSubjectTable);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
