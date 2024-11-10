@@ -1,0 +1,67 @@
+﻿@model DatabaseAccess.ClassSectionTable
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<!DOCTYPE html>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Edit A Class Section</h6>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>ClassSectionTable</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ClassSectionID)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ClassID, "Select Class", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ClassID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ClassID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SectionID, "Select Section", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("SectionID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SectionID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.IsActive)
+                            @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-success" />
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-defaut" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

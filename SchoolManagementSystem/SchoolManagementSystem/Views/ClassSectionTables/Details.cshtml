@@ -1,0 +1,58 @@
+﻿@model DatabaseAccess.ClassSectionTable
+
+@{
+    Layout = null;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ClassSectionTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassTable.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SectionTable.SectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SectionTable.SectionName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClassSectionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

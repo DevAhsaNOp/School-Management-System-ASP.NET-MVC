@@ -1,0 +1,62 @@
+﻿@model DatabaseAccess.ClassSectionTable
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ClassSectionTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassTable.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SectionTable.SectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SectionTable.SectionName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

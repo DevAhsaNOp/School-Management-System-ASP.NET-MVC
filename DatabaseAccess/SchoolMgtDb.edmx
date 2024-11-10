@@ -513,13 +513,13 @@
         </Association>
         <Association Name="FK_ClassSectionTable_ClassTable">
           <End Role="ClassTable" Type="Self.ClassTable" Multiplicity="1" />
-          <End Role="ClassSectionTable" Type="Self.ClassSectionTable" Multiplicity="0..1" />
+          <End Role="ClassSectionTable" Type="Self.ClassSectionTable" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ClassTable">
               <PropertyRef Name="ClassID" />
             </Principal>
             <Dependent Role="ClassSectionTable">
-              <PropertyRef Name="ClassSectionID" />
+              <PropertyRef Name="ClassID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1786,7 +1786,7 @@
           <NavigationProperty Name="StudentTables" Relationship="Self.FK_StudentTable_ClassTable" FromRole="ClassTable" ToRole="StudentTable" />
           <NavigationProperty Name="SubmissionFeeTables" Relationship="Self.FK_SubmissionFeeTable_ClassTable" FromRole="ClassTable" ToRole="SubmissionFeeTable" />
           <NavigationProperty Name="TimeTblTables" Relationship="Self.FK_TimeTblTable_ClassTable" FromRole="ClassTable" ToRole="TimeTblTable" />
-          <NavigationProperty Name="ClassSectionTable" Relationship="SchoolMgtDbModel.FK_ClassSectionTable_ClassTable" FromRole="ClassTable" ToRole="ClassSectionTable" />
+          <NavigationProperty Name="ClassSectionTables" Relationship="SchoolMgtDbModel.FK_ClassSectionTable_ClassTable" FromRole="ClassTable" ToRole="ClassSectionTable" />
         </EntityType>
         <EntityType Name="DesignationTable">
           <Key>
@@ -3494,21 +3494,8 @@
             <End Role="UserTypeTable" EntitySet="UserTypeTables" />
             <End Role="UserTable" EntitySet="UserTables" />
           </AssociationSet>
-          <EntitySet Name="ClassSectionTables" EntityType="SchoolMgtDbModel.ClassSectionTable" />
-          <AssociationSet Name="FK_ClassSectionTable_ClassTable" Association="SchoolMgtDbModel.FK_ClassSectionTable_ClassTable">
-            <End Role="ClassTable" EntitySet="ClassTables" />
-            <End Role="ClassSectionTable" EntitySet="ClassSectionTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ClassSectionTable_SectionTable" Association="SchoolMgtDbModel.FK_ClassSectionTable_SectionTable">
-            <End Role="SectionTable" EntitySet="SectionTables" />
-            <End Role="ClassSectionTable" EntitySet="ClassSectionTables" />
-          </AssociationSet>
           <EntitySet Name="sysdiagrams" EntityType="SchoolMgtDbModel.sysdiagram" />
           <EntitySet Name="ClassSubjectTables" EntityType="SchoolMgtDbModel.ClassSubjectTable" />
-          <AssociationSet Name="FK_ClassSubjectTable_ClassTable" Association="SchoolMgtDbModel.FK_ClassSubjectTable_ClassTable">
-            <End Role="ClassSectionTable" EntitySet="ClassSectionTables" />
-            <End Role="ClassSubjectTable" EntitySet="ClassSubjectTables" />
-          </AssociationSet>
           <AssociationSet Name="FK_ClassSubjectTable_SubjectTable" Association="SchoolMgtDbModel.FK_ClassSubjectTable_SubjectTable">
             <End Role="SubjectTable" EntitySet="SubjectTables" />
             <End Role="ClassSubjectTable" EntitySet="ClassSubjectTables" />
@@ -3521,44 +3508,20 @@
             <End Role="ClassSubjectTable" EntitySet="ClassSubjectTables" />
             <End Role="TimeTblTable" EntitySet="TimeTblTables" />
           </AssociationSet>
+          <EntitySet Name="ClassSectionTables" EntityType="SchoolMgtDbModel.ClassSectionTable" />
+          <AssociationSet Name="FK_ClassSectionTable_ClassTable" Association="SchoolMgtDbModel.FK_ClassSectionTable_ClassTable">
+            <End Role="ClassTable" EntitySet="ClassTables" />
+            <End Role="ClassSectionTable" EntitySet="ClassSectionTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassSectionTable_SectionTable" Association="SchoolMgtDbModel.FK_ClassSectionTable_SectionTable">
+            <End Role="SectionTable" EntitySet="SectionTables" />
+            <End Role="ClassSectionTable" EntitySet="ClassSectionTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassSubjectTable_ClassTable" Association="SchoolMgtDbModel.FK_ClassSubjectTable_ClassTable">
+            <End Role="ClassSectionTable" EntitySet="ClassSectionTables" />
+            <End Role="ClassSubjectTable" EntitySet="ClassSubjectTables" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="ClassSectionTable">
-          <Key>
-            <PropertyRef Name="ClassSectionID" />
-          </Key>
-          <Property Name="ClassSectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ClassID" Type="Int32" Nullable="false" />
-          <Property Name="SectionID" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="ClassTable" Relationship="SchoolMgtDbModel.FK_ClassSectionTable_ClassTable" FromRole="ClassSectionTable" ToRole="ClassTable" />
-          <NavigationProperty Name="SectionTable" Relationship="SchoolMgtDbModel.FK_ClassSectionTable_SectionTable" FromRole="ClassSectionTable" ToRole="SectionTable" />
-          <NavigationProperty Name="ClassSubjectTables" Relationship="SchoolMgtDbModel.FK_ClassSubjectTable_ClassTable" FromRole="ClassSectionTable" ToRole="ClassSubjectTable" />
-        </EntityType>
-        <Association Name="FK_ClassSectionTable_ClassTable">
-          <End Type="SchoolMgtDbModel.ClassTable" Role="ClassTable" Multiplicity="1" />
-          <End Type="SchoolMgtDbModel.ClassSectionTable" Role="ClassSectionTable" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="ClassTable">
-              <PropertyRef Name="ClassID" />
-            </Principal>
-            <Dependent Role="ClassSectionTable">
-              <PropertyRef Name="ClassSectionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ClassSectionTable_SectionTable">
-          <End Type="SchoolMgtDbModel.SectionTable" Role="SectionTable" Multiplicity="1" />
-          <End Type="SchoolMgtDbModel.ClassSectionTable" Role="ClassSectionTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SectionTable">
-              <PropertyRef Name="SectionID" />
-            </Principal>
-            <Dependent Role="ClassSectionTable">
-              <PropertyRef Name="SectionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -3578,23 +3541,11 @@
           <Property Name="SubjectID" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="ClassSectionTable" Relationship="SchoolMgtDbModel.FK_ClassSubjectTable_ClassTable" FromRole="ClassSubjectTable" ToRole="ClassSectionTable" />
           <NavigationProperty Name="SubjectTable" Relationship="SchoolMgtDbModel.FK_ClassSubjectTable_SubjectTable" FromRole="ClassSubjectTable" ToRole="SubjectTable" />
           <NavigationProperty Name="ExamMarkTables" Relationship="SchoolMgtDbModel.FK_ExamMarkTable_ClassSubjectTable" FromRole="ClassSubjectTable" ToRole="ExamMarkTable" />
           <NavigationProperty Name="TimeTblTables" Relationship="SchoolMgtDbModel.FK_TimeTblTable_ClassSubjectTable" FromRole="ClassSubjectTable" ToRole="TimeTblTable" />
+          <NavigationProperty Name="ClassSectionTable" Relationship="SchoolMgtDbModel.FK_ClassSubjectTable_ClassTable" FromRole="ClassSubjectTable" ToRole="ClassSectionTable" />
         </EntityType>
-        <Association Name="FK_ClassSubjectTable_ClassTable">
-          <End Type="SchoolMgtDbModel.ClassSectionTable" Role="ClassSectionTable" Multiplicity="1" />
-          <End Type="SchoolMgtDbModel.ClassSubjectTable" Role="ClassSubjectTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ClassSectionTable">
-              <PropertyRef Name="ClassSectionID" />
-            </Principal>
-            <Dependent Role="ClassSubjectTable">
-              <PropertyRef Name="ClassSectionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ClassSubjectTable_SubjectTable">
           <End Type="SchoolMgtDbModel.SubjectTable" Role="SubjectTable" Multiplicity="1" />
           <End Type="SchoolMgtDbModel.ClassSubjectTable" Role="ClassSubjectTable" Multiplicity="*" />
@@ -3628,6 +3579,55 @@
             </Principal>
             <Dependent Role="TimeTblTable">
               <PropertyRef Name="ClassSubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ClassSectionTable">
+          <Key>
+            <PropertyRef Name="ClassSectionID" />
+          </Key>
+          <Property Name="ClassSectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="SectionID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ClassTable" Relationship="SchoolMgtDbModel.FK_ClassSectionTable_ClassTable" FromRole="ClassSectionTable" ToRole="ClassTable" />
+          <NavigationProperty Name="SectionTable" Relationship="SchoolMgtDbModel.FK_ClassSectionTable_SectionTable" FromRole="ClassSectionTable" ToRole="SectionTable" />
+          <NavigationProperty Name="ClassSubjectTables" Relationship="SchoolMgtDbModel.FK_ClassSubjectTable_ClassTable" FromRole="ClassSectionTable" ToRole="ClassSubjectTable" />
+        </EntityType>
+        <Association Name="FK_ClassSectionTable_ClassTable">
+          <End Type="SchoolMgtDbModel.ClassTable" Role="ClassTable" Multiplicity="1" />
+          <End Type="SchoolMgtDbModel.ClassSectionTable" Role="ClassSectionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassTable">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="ClassSectionTable">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassSectionTable_SectionTable">
+          <End Type="SchoolMgtDbModel.SectionTable" Role="SectionTable" Multiplicity="1" />
+          <End Type="SchoolMgtDbModel.ClassSectionTable" Role="ClassSectionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SectionTable">
+              <PropertyRef Name="SectionID" />
+            </Principal>
+            <Dependent Role="ClassSectionTable">
+              <PropertyRef Name="SectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassSubjectTable_ClassTable">
+          <End Type="SchoolMgtDbModel.ClassSectionTable" Role="ClassSectionTable" Multiplicity="1" />
+          <End Type="SchoolMgtDbModel.ClassSubjectTable" Role="ClassSubjectTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassSectionTable">
+              <PropertyRef Name="ClassSectionID" />
+            </Principal>
+            <Dependent Role="ClassSubjectTable">
+              <PropertyRef Name="ClassSectionID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4087,17 +4087,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ClassSectionTables">
-            <EntityTypeMapping TypeName="SchoolMgtDbModel.ClassSectionTable">
-              <MappingFragment StoreEntitySet="ClassSectionTable">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="SectionID" ColumnName="SectionID" />
-                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
-                <ScalarProperty Name="ClassSectionID" ColumnName="ClassSectionID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="SchoolMgtDbModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -4117,6 +4106,17 @@
                 <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
                 <ScalarProperty Name="ClassSectionID" ColumnName="ClassSectionID" />
                 <ScalarProperty Name="ClassSubjectID" ColumnName="ClassSubjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassSectionTables">
+            <EntityTypeMapping TypeName="SchoolMgtDbModel.ClassSectionTable">
+              <MappingFragment StoreEntitySet="ClassSectionTable">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ClassSectionID" ColumnName="ClassSectionID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

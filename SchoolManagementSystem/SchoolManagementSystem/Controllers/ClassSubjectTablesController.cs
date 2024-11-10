@@ -149,7 +149,9 @@ namespace SchoolManagementSystem.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var classSubjectTable = db.ClassSubjectTables.Where(cst => cst.ClassSectionID == id).ToList();
+            var classSubjectTable = db.ClassSubjectTables
+                .Where(cst => cst.ClassSectionID == id && cst.IsActive == true)
+                .ToList();
 
             if (classSubjectTable == null || classSubjectTable.Count == 0)
                 return HttpNotFound();
@@ -170,15 +172,20 @@ namespace SchoolManagementSystem.Controllers
             };
 
             ViewBag.ClassSectionID = new SelectList(db.ClassSectionTables.Where(s => s.IsActive == true), "ClassSectionID", "Title", id);
-            var subjectList = db.SubjectTables.Select(s => new SelectListItem { Text = s.Name, Value = s.SubjectID.ToString(), Selected = false }).ToList();
+
+            var subjectList = db.SubjectTables
+                .Select(s => new SelectListItem { Text = s.Name, Value = s.SubjectID.ToString(), Selected = false })
+                .ToList();
             var finalSubjectList = subjectList
                 .Select(s => new SelectListItem
                 {
                     Text = s.Text,
                     Value = s.Value,
                     Selected = classSubjectData.SubjectID.Any(si => si.Value == s.Value)
-                }).ToList();
+                })
+                .ToList();
             classSubjectData.SubjectID = finalSubjectList;
+
             return View(classSubjectData);
         }
 
@@ -196,7 +203,7 @@ namespace SchoolManagementSystem.Controllers
 
             if (ModelState.IsValid)
             {
-                var classSubjectData = db.ClassSubjectTables.Where(cst => cst.ClassSectionID == classSubjectTable.ClassSectionID).ToList();
+                var classSubjectData = db.ClassSubjectTables.Where(cst => cst.ClassSectionID == classSubjectTable.ClassSectionID && cst.IsActive == true).ToList();
                 classSubjectData.ForEach(cst => cst.IsActive = false);
                 classSubjectData.ForEach(cst => db.Entry(cst).State = EntityState.Modified);
                 db.SaveChanges();

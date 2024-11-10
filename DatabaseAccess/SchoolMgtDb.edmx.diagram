@@ -111,15 +111,15 @@
         <AssociationConnector Association="SchoolMgtDbModel.FK_SubmissionFeeTable_UserTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_TimeTblTable_UserTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_UserTable_UserTypeTable" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="SchoolMgtDbModel.ClassSectionTable" Width="1.5" PointX="7.5" PointY="91.75" />
-        <AssociationConnector Association="SchoolMgtDbModel.FK_ClassSectionTable_ClassTable" />
-        <AssociationConnector Association="SchoolMgtDbModel.FK_ClassSectionTable_SectionTable" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.ClassSubjectTable" Width="1.5" PointX="9.75" PointY="93.75" />
-        <AssociationConnector Association="SchoolMgtDbModel.FK_ClassSubjectTable_ClassTable" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_ClassSubjectTable_SubjectTable" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_ExamMarkTable_ClassSubjectTable" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_TimeTblTable_ClassSubjectTable" />
+        <EntityTypeShape EntityType="SchoolMgtDbModel.ClassSectionTable" Width="1.5" PointX="7.5" PointY="94.625" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_ClassSectionTable_ClassTable" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_ClassSectionTable_SectionTable" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_ClassSubjectTable_ClassTable" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
