@@ -24,7 +24,7 @@ namespace DatabaseAccess
         public Nullable<System.DateTime> CreatedDate { get; set; }
     
         public virtual ClassTable ClassTable { get; set; }
-        public virtual StudentTable StudentTable { get; set; }
         public virtual UserTable UserTable { get; set; }
+        public virtual StudentTable StudentTable { get; set; }
     }
 }

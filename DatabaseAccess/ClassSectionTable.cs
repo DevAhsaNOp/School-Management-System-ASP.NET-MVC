@@ -18,6 +18,7 @@ namespace DatabaseAccess
         public ClassSectionTable()
         {
             this.ClassSubjectTables = new HashSet<ClassSubjectTable>();
+            this.StudentTables = new HashSet<StudentTable>();
         }
     
         public int ClassSectionID { get; set; }
@@ -30,5 +31,7 @@ namespace DatabaseAccess
         public virtual SectionTable SectionTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClassSubjectTable> ClassSubjectTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentTable> StudentTables { get; set; }
     }
 }

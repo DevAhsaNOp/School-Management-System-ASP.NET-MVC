@@ -40,10 +40,10 @@ namespace DatabaseAccess
             this.SessionProgrameSubjectSettingTables = new HashSet<SessionProgrameSubjectSettingTable>();
             this.SessionTables = new HashSet<SessionTable>();
             this.StaffTables = new HashSet<StaffTable>();
-            this.StudentTables = new HashSet<StudentTable>();
             this.SubjectTables = new HashSet<SubjectTable>();
             this.SubmissionFeeTables = new HashSet<SubmissionFeeTable>();
             this.TimeTblTables = new HashSet<TimeTblTable>();
+            this.StudentTables = new HashSet<StudentTable>();
         }
     
         public int UserID { get; set; }
@@ -102,13 +102,13 @@ namespace DatabaseAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StaffTable> StaffTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentTable> StudentTables { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubjectTable> SubjectTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubmissionFeeTable> SubmissionFeeTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TimeTblTable> TimeTblTables { get; set; }
         public virtual UserTypeTable UserTypeTable { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentTable> StudentTables { get; set; }
     }
 }

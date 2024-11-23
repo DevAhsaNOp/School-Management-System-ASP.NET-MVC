@@ -21,7 +21,7 @@ namespace SchoolManagementSystem.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            var studentTables = db.StudentTables.Include(s => s.ClassTable).Include(s => s.ProgrameTable).Include(s => s.SessionTable).Include(s => s.UserTable);
+            var studentTables = db.StudentTables.Include(s => s.ClassSectionTable).Include(s => s.ProgrameTable).Include(s => s.SessionTable).Include(s => s.UserTable);
             return View(studentTables.ToList());
         }
 
@@ -53,9 +53,9 @@ namespace SchoolManagementSystem.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name");
-            ViewBag.Programe_ID = new SelectList(db.ProgrameTables, "ProgrameID", "Name");
-            ViewBag.Session_ID = new SelectList(db.SessionTables, "SessionID", "Name");
+            ViewBag.ClassSectionID = new SelectList(db.ClassTables, "ClassSectionID", "Name");
+            //ViewBag.Programe_ID = new SelectList(db.ProgrameTables, "ProgrameID", "Name");
+            //ViewBag.Session_ID = new SelectList(db.SessionTables, "SessionID", "Name");
             ViewBag.User_ID = new SelectList(db.UserTables, "UserID", "FullName");
             return View();
         }
@@ -65,7 +65,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentID,Session_ID,Programe_ID,User_ID,ClassID,Name,FatherName,DateofBirth,Gender,ContactNo,Photo,AddmissionDate,PreviousSchool,PreviousPercentage,EmailAddress,Address,Nationality")] StudentTable studentTable, HttpPostedFileBase image)
+        public ActionResult Create([Bind(Include = "StudentID,Session_ID,Programe_ID,User_ID,ClassSectionID,Name,FatherName,DateofBirth,Gender,ContactNo,Photo,AddmissionDate,PreviousSchool,PreviousPercentage,EmailAddress,Address,Nationality")] StudentTable studentTable, HttpPostedFileBase image)
         {
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
@@ -92,7 +92,7 @@ namespace SchoolManagementSystem.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name", studentTable.ClassID);
+            ViewBag.ClassSectionID = new SelectList(db.ClassTables, "ClassSectionID", "Name", studentTable.ClassSectionID);
             ViewBag.Programe_ID = new SelectList(db.ProgrameTables, "ProgrameID", "Name", studentTable.Programe_ID);
             ViewBag.Session_ID = new SelectList(db.SessionTables, "SessionID", "Name", studentTable.Session_ID);
             ViewBag.User_ID = new SelectList(db.UserTables, "UserID", "FullName", studentTable.User_ID);
@@ -116,7 +116,7 @@ namespace SchoolManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name", studentTable.ClassID);
+            ViewBag.ClassSectionID = new SelectList(db.ClassTables, "ClassSectionID", "Name", studentTable.ClassSectionID);
             ViewBag.Programe_ID = new SelectList(db.ProgrameTables, "ProgrameID", "Name", studentTable.Programe_ID);
             ViewBag.Session_ID = new SelectList(db.SessionTables, "SessionID", "Name", studentTable.Session_ID);
             ViewBag.User_ID = new SelectList(db.UserTables, "UserID", "FullName", studentTable.User_ID);
@@ -128,7 +128,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StudentID,Session_ID,Programe_ID,User_ID,ClassID,Name,FatherName,DateofBirth,Gender,ContactNo,Photo,AddmissionDate,PreviousSchool,PreviousPercentage,EmailAddress,Address,Nationality")] StudentTable studentTable, HttpPostedFileBase image)
+        public ActionResult Edit([Bind(Include = "StudentID,Session_ID,Programe_ID,User_ID,ClassSectionID,Name,FatherName,DateofBirth,Gender,ContactNo,Photo,AddmissionDate,PreviousSchool,PreviousPercentage,EmailAddress,Address,Nationality")] StudentTable studentTable, HttpPostedFileBase image)
         {
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
@@ -154,7 +154,7 @@ namespace SchoolManagementSystem.Controllers
             }
 
 
-            ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name", studentTable.ClassID);
+            ViewBag.ClassSectionID = new SelectList(db.ClassTables, "ClassSectionID", "Name", studentTable.ClassSectionID);
             ViewBag.Programe_ID = new SelectList(db.ProgrameTables, "ProgrameID", "Name", studentTable.Programe_ID);
             ViewBag.Session_ID = new SelectList(db.SessionTables, "SessionID", "Name", studentTable.Session_ID);
             ViewBag.User_ID = new SelectList(db.UserTables, "UserID", "FullName", studentTable.User_ID);

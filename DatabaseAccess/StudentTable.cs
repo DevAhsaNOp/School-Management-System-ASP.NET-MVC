@@ -25,15 +25,16 @@ namespace DatabaseAccess
         }
     
         public int StudentID { get; set; }
-        public int Session_ID { get; set; }
-        public int Programe_ID { get; set; }
+        public Nullable<int> Session_ID { get; set; }
+        public Nullable<int> Programe_ID { get; set; }
         public int User_ID { get; set; }
-        public Nullable<int> ClassID { get; set; }
+        public Nullable<int> ClassSectionID { get; set; }
         public string Name { get; set; }
         public string FatherName { get; set; }
         public System.DateTime DateofBirth { get; set; }
         public string Gender { get; set; }
         public string ContactNo { get; set; }
+        public string GuardianContactNo { get; set; }
         public string Photo { get; set; }
         public System.DateTime AddmissionDate { get; set; }
         public string PreviousSchool { get; set; }
@@ -44,7 +45,7 @@ namespace DatabaseAccess
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AttendanceTable> AttendanceTables { get; set; }
-        public virtual ClassTable ClassTable { get; set; }
+        public virtual ClassSectionTable ClassSectionTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExamMarkTable> ExamMarkTables { get; set; }
         public virtual ProgrameTable ProgrameTable { get; set; }
