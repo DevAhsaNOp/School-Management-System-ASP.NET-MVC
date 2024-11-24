@@ -198,10 +198,10 @@ namespace SchoolManagementSystem.Controllers
             }
             else
             {
-                foreach (var cls in db.ClassTables.Where(cls => cls.ClassID > student.ClassID))
-                {
-                    classTables.Add(new ClassTable { ClassID = cls.ClassID, Name = cls.Name });
-                }
+                //foreach (var cls in db.ClassTables.Where(cls => cls.ClassID > student.ClassID))
+                //{
+                //    classTables.Add(new ClassTable { ClassID = cls.ClassID, Name = cls.Name });
+                //}
             }
 
             return Json(new { data = classTables }, JsonRequestBehavior.AllowGet);

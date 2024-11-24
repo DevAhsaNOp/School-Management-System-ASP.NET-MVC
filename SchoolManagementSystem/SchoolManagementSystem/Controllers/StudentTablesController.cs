@@ -1,4 +1,5 @@
 ﻿using DatabaseAccess;
+using SchoolManagementSystem.Request;
 using System;
 using System.Data.Entity;
 using System.IO;
@@ -53,20 +54,46 @@ namespace SchoolManagementSystem.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            ViewBag.ClassSectionID = new SelectList(db.ClassTables, "ClassSectionID", "Name");
-            //ViewBag.Programe_ID = new SelectList(db.ProgrameTables, "ProgrameID", "Name");
-            //ViewBag.Session_ID = new SelectList(db.SessionTables, "SessionID", "Name");
+            ViewBag.ClassID = new SelectListItem[] { new SelectListItem { Text = "Select Class", Value = "", Disabled = true, Selected = true } }.Concat(db.ClassTables.Select(x => new SelectListItem { Text = x.Name, Value = x.ClassID.ToString() })).ToList();
+            var classGroupBySection = db.ClassSectionTables
+                .GroupBy(x => x.ClassID)
+                .Select(x => new
+                {
+                    ClassID = x.Key,
+                    Section = x.Select(y => new
+                    {
+                        Name = y.SectionTable.SectionName.Trim()
+                    }).ToList()
+                }).ToList();
+            ViewBag.ClassWithSections = classGroupBySection;
             ViewBag.User_ID = new SelectList(db.UserTables, "UserID", "FullName");
             return View();
         }
 
-        // POST: StudentTables/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentID,Session_ID,Programe_ID,User_ID,ClassSectionID,Name,FatherName,DateofBirth,Gender,ContactNo,Photo,AddmissionDate,PreviousSchool,PreviousPercentage,EmailAddress,Address,Nationality")] StudentTable studentTable, HttpPostedFileBase image)
+        public ActionResult Create(StudentCreateRequest studentTable, HttpPostedFileBase image)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.ClassID = new SelectListItem[] { new SelectListItem { Text = "Select Class", Value = "", Disabled = true, Selected = true } }.Concat(db.ClassTables.Select(x => new SelectListItem { Text = x.Name, Value = x.ClassID.ToString() })).ToList();
+                var classGroupBySection = db.ClassSectionTables
+                    .GroupBy(x => x.ClassID)
+                    .Select(x => new
+                    {
+                        ClassID = x.Key,
+                        Section = x.Select(y => new
+                        {
+                            Name = y.SectionTable.SectionName.Trim()
+                        }).ToList()
+                    }).ToList();
+                ViewBag.ClassWithSections = classGroupBySection;
+                ViewBag.User_ID = new SelectList(db.UserTables, "UserID", "FullName");
+                ModelState.AddModelError("", "Please fill all required fields.");
+                return View(studentTable);
+
+            }
+
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
                 return RedirectToAction("Login", "Home");
@@ -87,14 +114,14 @@ namespace SchoolManagementSystem.Controllers
             if (ModelState.IsValid)
             {
 
-                db.StudentTables.Add(studentTable);
-                db.SaveChanges();
+                //db.StudentTables.Add(studentTable);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ClassSectionID = new SelectList(db.ClassTables, "ClassSectionID", "Name", studentTable.ClassSectionID);
-            ViewBag.Programe_ID = new SelectList(db.ProgrameTables, "ProgrameID", "Name", studentTable.Programe_ID);
-            ViewBag.Session_ID = new SelectList(db.SessionTables, "SessionID", "Name", studentTable.Session_ID);
+            //ViewBag.ClassSectionID = new SelectList(db.ClassTables, "ClassSectionID", "Name", studentTable.ClassSectionID);
+            //ViewBag.Programe_ID = new SelectList(db.ProgrameTables, "ProgrameID", "Name", studentTable.Programe_ID);
+            //ViewBag.Session_ID = new SelectList(db.SessionTables, "SessionID", "Name", studentTable.Session_ID);
             ViewBag.User_ID = new SelectList(db.UserTables, "UserID", "FullName", studentTable.User_ID);
             return View(studentTable);
         }
