@@ -23,6 +23,9 @@
                             @Html.DisplayNameFor(model => model.Name)
                         </th>
                         <th>
+                            @Html.DisplayNameFor(model => model.Photo)
+                        </th>
+                        <th>
                             @Html.DisplayNameFor(model => model.DateofBirth)
                         </th>
                         <th>
@@ -32,58 +35,53 @@
                             @Html.DisplayNameFor(model => model.ContactNo)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Photo)
-                        </th>
-                        <th>
                             Class
                         </th>
-
                         <th>
                             Action
                         </th>
                     </tr>
-                    </thead>
+                </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.StudentID)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DateofBirth)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Gender)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ContactNo)
-                        </td>
-                        <td>
-                            @if (!string.IsNullOrEmpty(item.Photo))
-                            {
-                                <img class="img-profile rounded-circle"
-                                     src="@Url.Content(item.Photo)" height="80" width="80">
-                            }
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ClassTable.Name)
-                        </td>
-
-                        <td class="btn-group">
-                            @Html.ActionLink("Timetable", "StudentReport", "TimeTableReports", new { id = item.StudentID }, new { @class = "btn btn-info" })
-                            @Html.ActionLink("Attendance", "StudentAttendance", "AttendanceReports", new { id = item.StudentID }, new { @class = "btn btn-info" })
-                            @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }, new { @class = "btn btn-primary" })
-                            @Html.ActionLink("Details", "Details", new { id = item.StudentID }, new { @class = "btn btn-info" })
-                            @Html.ActionLink("Delete", "Delete", new { id = item.StudentID }, new { @class = "btn btn-danger" })
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StudentID)
+                            </td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(item.Photo))
+                                {
+                                    <img class="img-profile rounded-circle"
+                                         src="@Url.Content(item.Photo)" height="80" width="80">
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateofBirth)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContactNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ClassSectionTable.ClassTable.Name) - ( @Html.DisplayFor(modelItem => item.ClassSectionTable.SectionTable.SectionName) )
+                            </td>
+                            <td class="btn-group">
+                                @Html.ActionLink("Timetable", "StudentReport", "TimeTableReports", new { id = item.StudentID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Attendance", "StudentAttendance", "AttendanceReports", new { id = item.StudentID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Details", "Details", new { id = item.StudentID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.StudentID }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
         </div>
-</div>
+    </div>
 </div>

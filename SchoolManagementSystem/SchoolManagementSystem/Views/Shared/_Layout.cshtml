@@ -32,7 +32,7 @@
             $(function () { // will trigger when the document is ready
                 $(".datepicker").datepicker(); //Initialise any date pickers
             });
-        }) 
+        })
     </script>
 </head>
 <body id="page-top">
@@ -310,7 +310,7 @@
                         <h6 class="collapse-header">Attendence Reports</h6>
                         @Html.ActionLink("Student  Reports", "StudentAttendanceWise", "AttendanceReports", null, new { @class = "collapse-item" })
                         @Html.ActionLink("Staff Attendance Reports", "StaffAttendanceWise", "AttendanceReports", null, new { @class = "collapse-item" })
-                        
+
                         <h6 class="collapse-header">Adminstration Reports</h6>
                         @Html.ActionLink("Expenses Reports", "ExpensesWise", "ExpensesReport", null, new { @class = "collapse-item" })
                         @Html.ActionLink("Custom Expenses", "CustomExpenses", "ExpensesReport", null, new { @class = "collapse-item" })
@@ -319,7 +319,7 @@
 
 
 
-            <!-- Nav Item - Tables -->
+                    <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
@@ -449,6 +449,9 @@
             </div>s
         </div>
     </div>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="~/Content/AdminTemplate/vendor/jquery/jquery.min.js"></script>

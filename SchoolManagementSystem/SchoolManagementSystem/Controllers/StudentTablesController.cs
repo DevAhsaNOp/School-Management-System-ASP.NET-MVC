@@ -1,4 +1,5 @@
-﻿using DatabaseAccess;
+﻿using AutoMapper;
+using DatabaseAccess;
 using SchoolManagementSystem.Request;
 using System;
 using System.Data.Entity;
@@ -54,7 +55,8 @@ namespace SchoolManagementSystem.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            ViewBag.ClassID = new SelectListItem[] { new SelectListItem { Text = "Select Class", Value = "", Disabled = true, Selected = true } }.Concat(db.ClassTables.Select(x => new SelectListItem { Text = x.Name, Value = x.ClassID.ToString() })).ToList();
+            ViewBag.ClassID = new SelectListItem[] { new SelectListItem { Text = "Select Class", Value = "", Disabled = true, Selected = true } }
+            .Concat(db.ClassTables.Select(x => new SelectListItem { Text = x.Name, Value = x.ClassID.ToString() })).ToList();
             var classGroupBySection = db.ClassSectionTables
                 .GroupBy(x => x.ClassID)
                 .Select(x => new
@@ -62,21 +64,31 @@ namespace SchoolManagementSystem.Controllers
                     ClassID = x.Key,
                     Section = x.Select(y => new
                     {
+                        Id = y.SectionID,
                         Name = y.SectionTable.SectionName.Trim()
                     }).ToList()
                 }).ToList();
             ViewBag.ClassWithSections = classGroupBySection;
-            ViewBag.User_ID = new SelectList(db.UserTables, "UserID", "FullName");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(StudentCreateRequest studentTable, HttpPostedFileBase image)
+        public ActionResult Create(StudentRequest studentTable, HttpPostedFileBase image)
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.ClassID = new SelectListItem[] { new SelectListItem { Text = "Select Class", Value = "", Disabled = true, Selected = true } }.Concat(db.ClassTables.Select(x => new SelectListItem { Text = x.Name, Value = x.ClassID.ToString() })).ToList();
+                if (studentTable.ClassID != null && studentTable.ClassID.GetValueOrDefault() > 0)
+                {
+                    ViewBag.ClassID = new SelectListItem[] { new SelectListItem { Text = "Select Class", Value = "", Disabled = true, Selected = false } }
+                    .Concat(db.ClassTables.Select(x => new SelectListItem { Text = x.Name, Value = x.ClassID.ToString(), Selected = x.ClassID == studentTable.ClassID })).ToList();
+                }
+                else
+                {
+                    ViewBag.ClassID = new SelectListItem[] { new SelectListItem { Text = "Select Class", Value = "", Disabled = true, Selected = true } }
+                    .Concat(db.ClassTables.Select(x => new SelectListItem { Text = x.Name, Value = x.ClassID.ToString() })).ToList();
+                }
+
                 var classGroupBySection = db.ClassSectionTables
                     .GroupBy(x => x.ClassID)
                     .Select(x => new
@@ -84,14 +96,13 @@ namespace SchoolManagementSystem.Controllers
                         ClassID = x.Key,
                         Section = x.Select(y => new
                         {
+                            Id = y.SectionID,
                             Name = y.SectionTable.SectionName.Trim()
                         }).ToList()
                     }).ToList();
                 ViewBag.ClassWithSections = classGroupBySection;
-                ViewBag.User_ID = new SelectList(db.UserTables, "UserID", "FullName");
                 ModelState.AddModelError("", "Please fill all required fields.");
                 return View(studentTable);
-
             }
 
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
@@ -113,16 +124,31 @@ namespace SchoolManagementSystem.Controllers
 
             if (ModelState.IsValid)
             {
+                var classSectionID = db.ClassSectionTables.FirstOrDefault(x => x.ClassID == studentTable.ClassID && x.SectionID == studentTable.SectionID).ClassSectionID;
+                StudentTable student = new StudentTable
+                {
+                    User_ID = studentTable.User_ID,
+                    ClassSectionID = classSectionID,
+                    Name = studentTable.Name,
+                    FatherName = studentTable.FatherName,
+                    DateofBirth = Convert.ToDateTime(studentTable.DateofBirth),
+                    AddmissionDate = Convert.ToDateTime(studentTable.AddmissionDate),
+                    Photo = studentTable.Photo,
+                    Gender = studentTable.Gender,
+                    Address = studentTable.Address,
+                    ContactNo = studentTable.ContactNo,
+                    EmailAddress = studentTable.EmailAddress,
+                    GuardianContactNo = studentTable.GuardianContactNo,
+                    Nationality = studentTable.Nationality,
+                    PreviousSchool = studentTable.PreviousSchool,
+                    PreviousPercentage = studentTable.PreviousPercentage,
+                };
 
-                //db.StudentTables.Add(studentTable);
-                //db.SaveChanges();
+                db.StudentTables.Add(student);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.ClassSectionID = new SelectList(db.ClassTables, "ClassSectionID", "Name", studentTable.ClassSectionID);
-            //ViewBag.Programe_ID = new SelectList(db.ProgrameTables, "ProgrameID", "Name", studentTable.Programe_ID);
-            //ViewBag.Session_ID = new SelectList(db.SessionTables, "SessionID", "Name", studentTable.Session_ID);
-            ViewBag.User_ID = new SelectList(db.UserTables, "UserID", "FullName", studentTable.User_ID);
             return View(studentTable);
         }
 
@@ -138,16 +164,36 @@ namespace SchoolManagementSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             StudentTable studentTable = db.StudentTables.Find(id);
+
             if (studentTable == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ClassSectionID = new SelectList(db.ClassTables, "ClassSectionID", "Name", studentTable.ClassSectionID);
-            ViewBag.Programe_ID = new SelectList(db.ProgrameTables, "ProgrameID", "Name", studentTable.Programe_ID);
-            ViewBag.Session_ID = new SelectList(db.SessionTables, "SessionID", "Name", studentTable.Session_ID);
-            ViewBag.User_ID = new SelectList(db.UserTables, "UserID", "FullName", studentTable.User_ID);
-            return View(studentTable);
+
+            ViewBag.ClassID = new SelectList(
+                db.ClassTables.Select(x => new { x.ClassID, x.Name }),
+                "ClassID",
+                "Name",
+                studentTable.ClassSectionTable.ClassID);
+
+            var classGroupBySection = db.ClassSectionTables
+                .GroupBy(x => x.ClassID)
+                .Select(x => new
+                {
+                    ClassID = x.Key,
+                    Section = x.Select(y => new
+                    {
+                        Id = y.SectionID,
+                        Name = y.SectionTable.SectionName.Trim()
+                    }).ToList()
+                }).ToList();
+
+            ViewBag.ClassWithSections = classGroupBySection;
+            StudentRequest student = Mapper.Map<StudentRequest>(studentTable);
+
+            return View(student);
         }
 
         // POST: StudentTables/Edit/5
@@ -155,11 +201,40 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StudentID,Session_ID,Programe_ID,User_ID,ClassSectionID,Name,FatherName,DateofBirth,Gender,ContactNo,Photo,AddmissionDate,PreviousSchool,PreviousPercentage,EmailAddress,Address,Nationality")] StudentTable studentTable, HttpPostedFileBase image)
+        public ActionResult Edit(StudentRequest studentTable, HttpPostedFileBase image)
         {
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                if (studentTable.ClassID != null && studentTable.ClassID.GetValueOrDefault() > 0)
+                {
+                    ViewBag.ClassID = new SelectListItem[] { new SelectListItem { Text = "Select Class", Value = "", Disabled = true, Selected = false } }
+                    .Concat(db.ClassTables.Select(x => new SelectListItem { Text = x.Name, Value = x.ClassID.ToString(), Selected = x.ClassID == studentTable.ClassID })).ToList();
+                }
+                else
+                {
+                    ViewBag.ClassID = new SelectListItem[] { new SelectListItem { Text = "Select Class", Value = "", Disabled = true, Selected = true } }
+                    .Concat(db.ClassTables.Select(x => new SelectListItem { Text = x.Name, Value = x.ClassID.ToString() })).ToList();
+                }
+
+                var classGroupBySection = db.ClassSectionTables
+                    .GroupBy(x => x.ClassID)
+                    .Select(x => new
+                    {
+                        ClassID = x.Key,
+                        Section = x.Select(y => new
+                        {
+                            Id = y.SectionID,
+                            Name = y.SectionTable.SectionName.Trim()
+                        }).ToList()
+                    }).ToList();
+                ViewBag.ClassWithSections = classGroupBySection;
+                ModelState.AddModelError("", "Please fill all required fields.");
+                return View(studentTable);
             }
 
             int userId = Convert.ToInt32(Convert.ToString(Session["UserID"]));
@@ -175,16 +250,31 @@ namespace SchoolManagementSystem.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Entry(studentTable).State = EntityState.Modified;
+                var classSectionID = db.ClassSectionTables.FirstOrDefault(x => x.ClassID == studentTable.ClassID && x.SectionID == studentTable.SectionID).ClassSectionID;
+                StudentTable student = new StudentTable
+                {
+                    StudentID = studentTable.StudentID,
+                    User_ID = studentTable.User_ID,
+                    ClassSectionID = classSectionID,
+                    Name = studentTable.Name,
+                    FatherName = studentTable.FatherName,
+                    DateofBirth = Convert.ToDateTime(studentTable.DateofBirth),
+                    AddmissionDate = Convert.ToDateTime(studentTable.AddmissionDate),
+                    Photo = studentTable.Photo,
+                    Gender = studentTable.Gender,
+                    Address = studentTable.Address,
+                    ContactNo = studentTable.ContactNo,
+                    EmailAddress = studentTable.EmailAddress,
+                    GuardianContactNo = studentTable.GuardianContactNo,
+                    Nationality = studentTable.Nationality,
+                    PreviousSchool = studentTable.PreviousSchool,
+                    PreviousPercentage = studentTable.PreviousPercentage,
+                };
+                db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-
-            ViewBag.ClassSectionID = new SelectList(db.ClassTables, "ClassSectionID", "Name", studentTable.ClassSectionID);
-            ViewBag.Programe_ID = new SelectList(db.ProgrameTables, "ProgrameID", "Name", studentTable.Programe_ID);
-            ViewBag.Session_ID = new SelectList(db.SessionTables, "SessionID", "Name", studentTable.Session_ID);
-            ViewBag.User_ID = new SelectList(db.UserTables, "UserID", "FullName", studentTable.User_ID);
             return View(studentTable);
         }
 

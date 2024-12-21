@@ -221,7 +221,7 @@
     <Compile Include="Repository\IResumeRepository.cs" />
     <Compile Include="Repository\ResumeRepository.cs" />
     <Compile Include="Request\ClassSubjectRequest.cs" />
-    <Compile Include="Request\StudentCreateRequest.cs" />
+    <Compile Include="Request\StudentRequest.cs" />
     <Compile Include="Response\ClassSubjectResponse.cs" />
     <Compile Include="ViewModels\CertificationVM.cs" />
     <Compile Include="ViewModels\ClassSubjectVM.cs" />
