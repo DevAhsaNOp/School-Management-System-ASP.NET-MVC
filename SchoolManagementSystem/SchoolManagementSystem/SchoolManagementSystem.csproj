@@ -177,6 +177,7 @@
     <Compile Include="Controllers\AnnualTablesController.cs" />
     <Compile Include="Controllers\AttendanceReportsController.cs" />
     <Compile Include="Controllers\AttendanceTablesController.cs" />
+    <Compile Include="ViewModels\ClassDDViewModel.cs" />
     <Compile Include="Controllers\ClassSectionTablesController.cs" />
     <Compile Include="Controllers\ClassSubjectTablesController.cs" />
     <Compile Include="Controllers\ClassTablesController.cs" />

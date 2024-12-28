@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DatabaseAccess;
 using SchoolManagementSystem.Request;
+using SchoolManagementSystem.ViewModels;
 using System;
 using System.Data.Entity;
 using System.IO;
@@ -172,11 +173,7 @@ namespace SchoolManagementSystem.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.ClassID = new SelectList(
-                db.ClassTables.Select(x => new { x.ClassID, x.Name }),
-                "ClassID",
-                "Name",
-                studentTable.ClassSectionTable.ClassID);
+            ViewBag.ClassID = db.ClassTables.Select(x => new ClassDDViewModel { ClassID = x.ClassID, ClassName = x.Name }).ToList();
 
             var classGroupBySection = db.ClassSectionTables
                 .GroupBy(x => x.ClassID)

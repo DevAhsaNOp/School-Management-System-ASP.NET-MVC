@@ -52,15 +52,14 @@
                             <td>
                                 @if (!string.IsNullOrEmpty(item.Photo))
                                 {
-                                    <img class="img-profile rounded-circle"
-                                         src="@Url.Content(item.Photo)" height="80" width="80">
+                                    <img class="img-profile" src="@Url.Content(item.Photo)" height="80" width="80">
                                 }
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.DateofBirth)
+                                @item.DateofBirth.ToString("dd/MMM/yyyy")
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Gender)

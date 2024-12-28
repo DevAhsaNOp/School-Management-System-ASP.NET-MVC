@@ -14,7 +14,7 @@
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-
+                @Html.HiddenFor(model => model.StudentID)
                 <div class="form-group row">
                     <div class="col-lg-5">
                         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
@@ -45,7 +45,13 @@
                     <div class="col-lg-5">
                         @Html.LabelFor(model => model.ClassID, "ClassID", htmlAttributes: new { @class = "control-label" })
                         @Html.ValidationMessageFor(model => model.ClassID, "", new { @class = "text-danger" })
-                        @Html.DropDownListFor(model => model.ClassID, (SelectList)ViewBag.ClassID, new { @class = "form-control" })
+                        <select id="ClassID" name="ClassID" class="form-control">
+                            <option value="0">--- Select Class ---</option>
+                            @foreach (var cid in ViewBag.ClassID)
+                            {
+                                <option value="@cid.ClassID" @(Model.ClassID == cid.ClassID ? "selected" : "")>@cid.ClassName</option>
+                            }
+                        </select>
                     </div>
                     <div class="col-lg-5">
                         @Html.LabelFor(model => model.SectionID, "SectionID", htmlAttributes: new { @class = "control-label" })
@@ -130,7 +136,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-success" />
+                    <input type="submit" value="Save" class="btn btn-success" />
                     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-defaut" })
                 </div>
 
@@ -173,6 +179,7 @@
         });
 
         var selectedClassId = $('#ClassID').val();
+        console.log('Selected Class:' + selectedClassId);
         if (selectedClassId) {
             $('#ClassID').trigger('change');
         }
